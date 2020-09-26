@@ -1,6 +1,8 @@
 .cards__rectangle{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding-left: 18px;
+    padding-right: 26px;
     align-items: center;
     background-color: #FFFFFF;
     min-height: 79px;
