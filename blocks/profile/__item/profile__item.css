@@ -1,3 +1,12 @@
 .profile__item{
     display: flex;
 }
+
+
+@media screen and (max-width: 320px) {
+    .profile__item{
+        justify-content: center;
+
+    }   
+    
+}

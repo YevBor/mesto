@@ -8,3 +8,15 @@
     padding-top: 3%;
     padding-bottom: 4%;
 }
+
+
+
+@media screen and (max-width: 320px) {
+    .profile{
+        flex-direction: column;
+        padding-bottom: 36px;
+        max-width: 282px;
+        
+    }
+    
+}

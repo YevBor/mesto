@@ -46,10 +46,10 @@ function formSubmitHandler (evt) {
 
     changeInputName.textContent = name;
     changeInputJob.textContent = job;
-    
+
     popup.classList.toggle("popup_opened");
 }
 
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
-formElement.addEventListener('click', formSubmitHandler); 
+formElement.addEventListener('submit', formSubmitHandler); 

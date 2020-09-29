@@ -10,3 +10,13 @@
     max-width: 358px;
     color: #000000;
 }
+
+@media screen and (max-width: 320px) {
+    .popup__title{
+        font-size: 18px;
+        line-height: 22px;
+        max-width: 238px;
+        white-space: nowrap;
+    }   
+    
+}

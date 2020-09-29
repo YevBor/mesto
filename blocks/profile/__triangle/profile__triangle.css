@@ -1,0 +1,22 @@
+.profile__triangle{
+    position: absolute;
+    right: 0;
+    bottom: 41%;
+    display: flex;
+    justify-content: center;
+    border: 2px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 2px;
+    width: 150px;
+    min-height: 50px;
+}
+
+@media screen and (max-width: 320px) {
+    .profile__triangle{
+        position: relative;
+        width: 282px;
+        margin-top: 36px;
+
+    }   
+    
+}

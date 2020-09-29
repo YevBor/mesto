@@ -8,3 +8,11 @@
     line-height: 56px;
     color: #FFFFFF;
 }
+
+@media screen and (max-width: 320px) {
+    .profile__title{
+        font-size: 27px;
+        text-align: center; 
+    }
+    
+}

@@ -18,10 +18,12 @@
             <div class="profile__items">
                 <div class="profile__item">
                     <h1 class="profile__title">Жак-Ив Кусто</h1>
-                    <img class="profile__edit-button" src="./images/Edit Button.png" alt="кнопка редактированья">
+                    <img class="profile__edit-button pointer-opacity" src="./images/Edit Button.png" alt="кнопка редактированья">
                 </div>
                 <h2 class="profile__subtitle">Исследователь океана</h2>
-                <img class="profile__add-button" src="./images/Add Button.png" alt="кнопка добовления">
+                <div class="profile__triangle pointer-opacity">
+                    <img class="profile__add-button" src="./images/add_plus.svg" alt="кнопка добовления">
+                </div>
             </div>
         </section>
         <section class="cards">
@@ -71,11 +73,11 @@
         <section class="popup popup_opened">
             
             <div class="popup__container">
-                <img src="./images/Close Icon.png" alt="иконка закрытия" class="popup__close-image">
+                <img src="./images/Close Icon.png" alt="иконка закрытия" class="popup__close-image pointer-opacity">
                 <h2 class="popup__title">Редактировать профиль</h2>
                 <input type="text" placeholder="Жак-Ив Кусто" class="popup__input-name">
                 <input type="text" placeholder="Исследователь океана" class="popup__input-profession">
-                <button class="popup__save-button">Сохранить</button>
+                <button type="submit" class="popup__save-button pointer-opacity">Сохранить</button>
             </div>
         </section>
     </main>
