@@ -1,17 +1,22 @@
-# Проект 4: Место
 
-### Обзор
+# Project 4: Mesto
+This project describes profiles of people with beatiful pictures
 
-* Figma
-* Картинки
+
+### Review
+Responsive layout for design theme from Figma.My fourth project within Yandex practicum course.
+The main purpose of the project is to learn how responsive layout works on different devices 
+The functionality of this project includes HTML, CSS and JS.
+
+Implementing JS into the code, for the first time.
+
+
+**Mesto**
+* [Link to project](https://yevbor.github.io/mesto/)
+
 
 **Figma**
+* [Link to theme](https://www.figma.com/file/StZjf8HnoeLdiXS7dYrLAh/JavaScript.-Sprint-4)
 
-* [Ссылка на макет в Figma](https://www.figma.com/file/StZjf8HnoeLdiXS7dYrLAh/JavaScript.-Sprint-4)
 
-**Картинки**
 
-Доставать картинки предстоит из Фигмы. Это расхожая практика, поэтому полезно потренироваться.
-Не забудьте [оптимизировать картинки](https://tinypng.com/), чтобы ваш сайт загружался быстрее.
-
-Удачи!
