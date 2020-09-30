@@ -41,7 +41,6 @@ function formSubmitHandler (evt) {
     let name = nameInput.value;
     let job = jobInput.value; // Получите значение полей из свойства value
 
-
     changeInputName.textContent = name;
     changeInputJob.textContent = job;
 
