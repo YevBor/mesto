@@ -38,8 +38,6 @@ function formSubmitHandler (evt) {
     let changeInputName= document.querySelector(".profile__title");
     let changeInputJob = document.querySelector(".profile__subtitle");
 
-
-
     let name = nameInput.value;
     let job = jobInput.value; // Получите значение полей из свойства value
 
