@@ -11,7 +11,7 @@
     min-height: 50px;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 640px) {
     .profile__triangle{
         position: relative;
         width: 282px;
