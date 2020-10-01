@@ -1,7 +1,4 @@
 .profile__triangle{
-    position: absolute;
-    right: 0;
-    bottom: 41%;
     display: flex;
     justify-content: center;
     border: 2px solid #FFFFFF;
