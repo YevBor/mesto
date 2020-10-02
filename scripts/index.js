@@ -4,7 +4,7 @@ let popup = document.querySelector(".popup");
 
 
 function popupToggle(){
-    popup.classList.toggle("popup_opened");
+    popup.classList.toggle("popup_closed");
 }
 
 
