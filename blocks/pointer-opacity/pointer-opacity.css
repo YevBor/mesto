@@ -1,5 +1,4 @@
 .pointer-opacity:hover{
     cursor: pointer;
-    transition: opacity .25s ease-in-out;
     opacity: 0.6;
 }

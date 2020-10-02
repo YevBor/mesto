@@ -2,6 +2,7 @@
     align-self: center;
     margin-left: 21px;
     padding-top: 6px;
+    transition: opacity .25s ease-in-out;
 }
 
 @media screen and (max-width: 640px) {
