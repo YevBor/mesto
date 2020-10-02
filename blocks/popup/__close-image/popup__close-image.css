@@ -2,13 +2,14 @@
     background-image: url(../../../images/close_icon.svg);
     background-repeat: no-repeat;
     background-position: center;
-    background-color: black;
+    background-color: transparent;
     border: none;
     width: 43px;
     height: 43px;
     position: absolute;
     top: -12%;
     right: -10.1%;
+    transition: opacity .25s ease-in-out;
     
 }
 
