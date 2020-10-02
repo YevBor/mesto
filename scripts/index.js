@@ -9,10 +9,7 @@ let jobInput = document.querySelector(".popup__input-profession");
 let changeInputName= document.querySelector(".profile__title");
 let changeInputJob = document.querySelector(".profile__subtitle");
 
-let state = 0
-
-buttonOpenPopup.addEventListener("click", openWindowChecker);
-buttonClosePopup.addEventListener("click", openWindowChecker);
+let state = 0;
 
 let formElement = document.querySelector(".popup__container");
 
@@ -36,9 +33,9 @@ function formSubmitHandler (evt) {
     evt.preventDefault();
     changeInputName.textContent = nameInput.value;
     changeInputJob.textContent = jobInput.value;
-    state = 0;
-    popupToggle();
+    openWindowChecker();
 }
 
-
+buttonOpenPopup.addEventListener("click", openWindowChecker);
+buttonClosePopup.addEventListener("click", openWindowChecker);
 formElement.addEventListener('submit', formSubmitHandler); 
