@@ -9,8 +9,8 @@
 @media screen and (max-width: 640px) {
     .avatar{
         align-self: center; 
-        padding-top: 32px;
-        padding-bottom: 10px;
+        margin-bottom: 12px;
+        margin-right: 0px;
     }
     
 }
