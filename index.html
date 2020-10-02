@@ -22,8 +22,7 @@
                         <input type="image" class="profile__edit-button pointer-opacity" src="./images/edit_button.svg" alt="кнопка редактированья">
                     </div>
                     <h2 class="profile__subtitle">Исследователь океана</h2>   
-                </div>
-                     
+                </div>           
             </div>
             <input type="button" class="profile__add-button pointer-opacity"  alt="кнопка добовления">
 
@@ -72,19 +71,20 @@
                 </div>
             </div>
         </section>
-        <section class="popup popup_opened">
-            <form class="popup__container">
-                <img  src="./images/Close Icon.png" alt="иконка закрытия" class="popup__close-image pointer-opacity">
-                <h2 class="popup__title">Редактировать профиль</h2>
-                <input type="text" placeholder="Жак-Ив Кусто" class="popup__input-name">
-                <input type="text" placeholder="Исследователь океана" class="popup__input-profession">
-                <button type="submit" class="popup__save-button">Сохранить</button>
-            </form>
-        </section>
     </main>
     <footer class="footer">
         <p class="footer__author">&copy; 2020. Mesto Russia</p>
     </footer>
+    <div class="popup popup_closed">
+        <form class="popup__container">
+            <!-- <img type="image"  src="./images/Close Icon.png" alt="иконка закрытия" class="popup__close-image pointer-opacity"> -->
+            <button type="button" class="popup__close-image pointer-opacity"></button>
+            <h2 class="popup__title">Редактировать профиль</h2>
+            <input type="text" placeholder="Жак-Ив Кусто" class="popup__text-row">
+            <input type="text" placeholder="Исследователь океана" class="popup__text-row">
+            <button type="submit" class="popup__save-button">Сохранить</button>
+        </form>
+    </div>
     <script src="./scripts/index.js"></script>
 </body>
 </html>
