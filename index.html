@@ -19,7 +19,7 @@
                 <div class="profile__item">
                     <div class="profile__title-inline">
                         <h1 class="profile__title">Жак-Ив Кусто</h1>
-                        <input type="image" class="profile__edit-button pointer-opacity" src="./images/edit_button.svg" alt="кнопка редактированья">
+                        <input type="image" name="edit_button" class="profile__edit-button pointer-opacity" src="./images/edit_button.svg" alt="кнопка редактированья">
                     </div>
                     <h2 class="profile__subtitle">Исследователь океана</h2>   
                 </div>           
@@ -28,45 +28,45 @@
         </section>
         <section class="cards">
             <div class="cards__item">
-                <img class="cards__image" src="./images/karachaevsk.jpg" alt="карачаевск">
+                <img class="cards__image " src="./images/karachaevsk.jpg" calt="карачаевск">
                 <div class="cards__rectangle">
                     <h2 class="cards__title">Карачаевск</h2>
-                    <input type="image" src="./images/like_button.svg" alt="кнопка лайк">
+                    <input type="image" name="like_button" src="./images/like_button.svg" alt="кнопка лайк" class="pointer-opacity">
                 </div>
             </div>
             <div class="cards__item">
                 <img class="cards__image" src="./images/gora_elbus.jpg" alt="карачаевск">
                 <div class="cards__rectangle">
                     <h2 class="cards__title">Гора Эльбрус</h2>
-                    <input type="image" src="./images/like_button.svg" alt="кнопка лайк">
+                    <input type="image" name="like_button" src="./images/like_button.svg" alt="кнопка лайк" class="pointer-opacity">
                 </div>
             </div>
             <div class="cards__item">
                 <img class="cards__image" src="./images/dombay2.jpg" alt="Домбай">
                 <div class="cards__rectangle">
                     <h2 class="cards__title">Домбай</h2>
-                    <input type="image" src="./images/like_button.svg" alt="кнопка лайк">
+                    <input type="image" name="like_button" src="./images/like_button.svg" alt="кнопка лайк" class="pointer-opacity">
                 </div>
             </div>
             <div class="cards__item">
                 <img class="cards__image" src="./images/gora_elbus2.jpg" alt="Гора Эльбрус">
                 <div class="cards__rectangle">
                     <h2 class="cards__title">Гора Эльбрус</h2>
-                    <input type="image" src="./images/like_button.svg" alt="кнопка лайк">
+                    <input type="image" name="like_button" src="./images/like_button.svg" alt="кнопка лайк" class="pointer-opacity">
                 </div>
             </div>
             <div class="cards__item">
                 <img class="cards__image" src="./images/karachaevsk2.jpg" alt="Домбай">
                 <div class="cards__rectangle">
                     <h2 class="cards__title">Домбай</h2>
-                    <input type="image" src="./images/like_button.svg" alt="кнопка лайк">
+                    <input type="image" name="like_button" src="./images/like_button.svg" alt="кнопка лайк" class="pointer-opacity">
                 </div>
             </div>
             <div class="cards__item">
                 <img class="cards__image" src="./images/cherkesia.jpg" alt="Карачаево-Черкесия">
                 <div class="cards__rectangle">
                     <h2 class="cards__title">Карачаево-Черкесия</h2>
-                    <input type="image" src="./images/like_button.svg" alt="кнопка лайк">
+                    <input type="image" name="like_button" src="./images/like_button.svg" alt="кнопка лайк" class="pointer-opacity">
                 </div>
             </div>
         </section>
@@ -78,8 +78,8 @@
         <form class="popup__container">
             <button aria-label="Close" type="button" class="popup__close-image pointer-opacity"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
-            <input type="text" placeholder="Жак-Ив Кусто" class="popup__text-row popup__input-name">
-            <input type="text" placeholder="Исследователь океана" class="popup__text-row popup__input-profession">
+            <input type="text" name="profile_name" placeholder="Жак-Ив Кусто" class="popup__text-row popup__input-name">
+            <input type="text" name="profile_job" placeholder="Исследователь океана" class="popup__text-row popup__input-profession">
             <button type="submit" class="popup__save-button">Сохранить</button>
         </form>
     </div>
