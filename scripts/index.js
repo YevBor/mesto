@@ -12,11 +12,8 @@ let formElement = document.querySelector(".popup__container");
 
 function togglePopup(){
         if (popup.classList.contains("popup_closed")){
-            console.log("nuka");
             nameInput.value = changeInputName.textContent
             jobInput.value = changeInputJob.textContent
-        }else{   
-            console.log("naka");
         }
         popup.classList.toggle("popup_closed");        
 }
