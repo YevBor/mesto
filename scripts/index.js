@@ -2,8 +2,6 @@ let buttonOpenPopup = document.querySelector(".profile__edit-button");
 let buttonClosePopup = document.querySelector(".popup__close-image");
 
 let popup = document.querySelector(".popup");
-let close = document.querySelector(".popup_closed");
-
 let nameInput = document.querySelector(".popup__input-name");
 let jobInput = document.querySelector(".popup__input-profession");
 
