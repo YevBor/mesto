@@ -29,4 +29,48 @@ formElement.addEventListener('submit', formSubmitHandler);
 
 buttonOpenPopup.addEventListener("click", togglePopup);
 buttonClosePopup.addEventListener("click", togglePopup);
-formElement.addEventListener('submit', formSubmitHandler); 
+
+
+const initialCards = [
+    {
+        name: 'Архыз',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    },
+    {
+        name: 'Челябинская область',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    },
+    {
+        name: 'Иваново',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    },
+    {
+        name: 'Камчатка',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    },
+    {
+        name: 'Холмогорский район',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    },
+    {
+        name: 'Байкал',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    }
+]; 
+
+const cards = document.querySelector('.cards');
+
+const renderList = () =>{
+    const items = initialCards.map(element => {
+        return `<div class="cards__item">
+        <img class="cards__image " src="${element.link}" alt="${element.name}">
+        <div class="cards__rectangle">
+            <h2 class="cards__title">${element.name}</h2>
+            <button type="button"  aria-label="кнопка лайк" class="cards__like-button pointer-opacity"></button>
+        </div>
+    </div>`
+    }).join('');
+    cards.insertAdjacentHTML('afterbegin', items);
+}
+
+renderList()
