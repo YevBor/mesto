@@ -22,7 +22,8 @@ let changeInputJob = document.querySelector(".profile__subtitle");
 let formElement = document.querySelector(".popup_type_edit .popup__container");
 
 function togglePopup(popup){
-        if (popup.classList.contains("popup_closed")){
+        if (popup.classList.contains("popup_closed") && popup.classList.contains("popup_type_edit")){
+            console.log('1');
             nameInput.value = changeInputName.textContent
             jobInput.value = changeInputJob.textContent
         }
@@ -32,9 +33,9 @@ function togglePopup(popup){
 
 function formSubmitHandler (evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-    changeInputName.textContent = nameInput.value
-    changeInputJob.textContent = jobInput.value
-    togglePopup()
+    changeInputName.textContent = nameInput.value;
+    changeInputJob.textContent = jobInput.value;
+    togglePopup(popupEdit);
 }
 
 formElement.addEventListener('submit', formSubmitHandler); 
