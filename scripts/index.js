@@ -1,22 +1,34 @@
-let buttonOpenPopup = document.querySelector(".profile__edit-button");
-let buttonClosePopup = document.querySelector(".popup__close-image");
 
-let popup = document.querySelector(".popup");
-let nameInput = document.querySelector(".popup__input-name");
-let jobInput = document.querySelector(".popup__input-profession");
+//popups open buttons
+let buttonOpenPopupEdit = document.querySelector(".profile__edit-button");
+let buttonOpenPopupNewCard = document.querySelector(".profile__add-button");
+//popups close buttons
+let buttonClosePopupEdit = document.querySelector(".popup_type_edit .popup__close-image");
+let buttonClosePopupNewCard = document.querySelector(".popup_type_new-card .popup__close-image");
+
+
+
+//popups
+let popupEdit = document.querySelector(".popup_type_edit");
+let popupNewCard = document.querySelector(".popup_type_new-card")
+
+
+let nameInput = document.querySelector(".popup_type_edit .popup__input-name");
+let jobInput = document.querySelector(".popup_type_edit .popup__input-profession");
 
 let changeInputName= document.querySelector(".profile__title");
 let changeInputJob = document.querySelector(".profile__subtitle");
 
-let formElement = document.querySelector(".popup__container");
+let formElement = document.querySelector(".popup_type_edit .popup__container");
 
-function togglePopup(){
+function togglePopup(popup){
         if (popup.classList.contains("popup_closed")){
             nameInput.value = changeInputName.textContent
             jobInput.value = changeInputJob.textContent
         }
         popup.classList.toggle("popup_closed");        
 }
+
 
 function formSubmitHandler (evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
@@ -27,9 +39,20 @@ function formSubmitHandler (evt) {
 
 formElement.addEventListener('submit', formSubmitHandler); 
 
-buttonOpenPopup.addEventListener("click", togglePopup);
-buttonClosePopup.addEventListener("click", togglePopup);
+buttonOpenPopupEdit.addEventListener("click", function () { 
+    togglePopup(popupEdit)
+});
+buttonClosePopupEdit.addEventListener("click",  function () { 
+    togglePopup(popupEdit)
+});
 
+buttonOpenPopupNewCard.addEventListener("click",  function () { 
+    togglePopup(popupNewCard)
+});
+
+buttonClosePopupNewCard.addEventListener("click",  function () { 
+    togglePopup(popupNewCard)
+});
 
 const initialCards = [
     {
@@ -59,6 +82,8 @@ const initialCards = [
 ]; 
 
 const cards = document.querySelector('.cards');
+
+const addButton = document.querySelector('.profile__add-button');
 
 const renderList = () =>{
     const items = initialCards.map(element => {

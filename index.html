@@ -74,13 +74,22 @@
     <footer class="footer">
         <p class="footer__author">&copy; 2020. Mesto Russia</p>
     </footer>
-    <div class="popup popup_closed">
+    <div class="popup popup_type_edit popup_closed">
         <form name="profile_form" class="popup__container">
             <button aria-label="Close" type="button" class="popup__close-image pointer-opacity"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
             <input type="text" name="profile_name" placeholder="Жак-Ив Кусто" class="popup__text-row popup__input-name">
             <input type="text" name="profile_job" placeholder="Исследователь океана" class="popup__text-row popup__input-profession">
             <button type="submit" class="popup__save-button">Сохранить</button>
+        </form>
+    </div>
+    <div class="popup popup_type_new-card popup_closed">
+        <form name="profile_form" class="popup__container">
+            <button aria-label="Close" type="button" class="popup__close-image pointer-opacity"></button>
+            <h2 class="popup__title">Новое место</h2>
+            <input type="text" name="profile_name" placeholder="Название" class="popup__text-row popup__input-name">
+            <input type="text" name="profile_job" placeholder="Ссылка на картинку" class="popup__text-row popup__input-profession">
+            <button type="submit" class="popup__save-button">Создать</button>
         </form>
     </div>
     <script src="./scripts/index.js"></script>
