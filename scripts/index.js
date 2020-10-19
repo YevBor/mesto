@@ -26,13 +26,18 @@ let changeInputJob = document.querySelector(".profile__subtitle");
 let formElement = document.querySelector(".popup_type_edit .popup__container");
 let formElementCards = document.querySelector(".popup_type_new-card .popup__container");
 
+
+
+// !!!!! Need to update
 function togglePopup(popup){
         if (popup.classList.contains("popup_closed") && popup.classList.contains("popup_type_edit")){
             console.log('1');
             nameInput.value = changeInputName.textContent
             jobInput.value = changeInputJob.textContent
         }
-        popup.classList.toggle("popup_closed");        
+        popup.classList.toggle("popup_closed");
+        cardName.value = "";
+        cardUrl.value = "";        
 }
 
 
@@ -43,15 +48,10 @@ function formSubmitHandler (evt) {
     togglePopup(popupEdit);
 }
 
-function formSubmitCards (evt) {
-    evt.preventDefault();
-    console.log(evt);
-    console.log(cardName.value);
-    console.log(cardUrl.value);
-};
+
 
 formElement.addEventListener('submit', formSubmitHandler); 
-formElementCards.addEventListener('submit', formSubmitCards); 
+
 
 buttonOpenPopupEdit.addEventListener("click", function () { 
     togglePopup(popupEdit)
@@ -115,27 +115,20 @@ const getItems = (element) => {
     console.log(card);
     return card;
 };
-    // `<div class="cards__item">
-    //     <img class="cards__image " src="${element.link}" alt="${element.name}">
-    //     <div class="cards__rectangle">
-    //         <h2 class="cards__title">${element.name}</h2>
-    //         <button type="button"  aria-label="кнопка лайк" class="cards__like-button pointer-opacity"></button>
-    //     </div>
-    // </div>`
-// );
 
+const bindHandlers = (evt) => {
+    console.log(evt);
+    evt.preventDefault();
+    const item = getItems({
+        name: cardName.value,
+        link: cardUrl.value
+    })
+    cards.prepend(item);
+    cardName.value = "";
+    cardUrl.value = "";
+    togglePopup(popupNewCard);
+};
 
-const bindHandlers = () => {
-    addButton.addEventListener("click", () => {
-        const item = getItems({
-            name: cardName.value,
-            link: cardUrl.value
-        })
-        cards.prepend(item)
-        input.value = "";
-    });
-
-}
+formElementCards.addEventListener('submit', bindHandlers); 
 
 renderList()
-bindHandlers()
