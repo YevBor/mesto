@@ -5,13 +5,15 @@ let buttonOpenPopupNewCard = document.querySelector(".profile__add-button");
 //popups close buttons
 let buttonClosePopupEdit = document.querySelector(".popup_type_edit .popup__close-image");
 let buttonClosePopupNewCard = document.querySelector(".popup_type_new-card .popup__close-image");
+let buttonClosePopupImage = document.querySelector(".popup_type_image .popup__close-image");
 
 
 
 
 //popups
 let popupEdit = document.querySelector(".popup_type_edit");
-let popupNewCard = document.querySelector(".popup_type_new-card")
+let popupNewCard = document.querySelector(".popup_type_new-card");
+let popupImage = document.querySelector(".popup_type_image");
 
 
 const nameInput = document.querySelector(".popup_type_edit .popup__input-name");
@@ -25,7 +27,6 @@ let changeInputJob = document.querySelector(".profile__subtitle");
 
 let formElement = document.querySelector(".popup_type_edit .popup__container");
 let formElementCards = document.querySelector(".popup_type_new-card .popup__container");
-
 
 
 // !!!!! Need to update
@@ -68,6 +69,10 @@ buttonClosePopupNewCard.addEventListener("click",  function () {
     togglePopup(popupNewCard)
 });
 
+buttonClosePopupImage.addEventListener("click", function () {
+    togglePopup(popupImage);
+})
+
 const initialCards = [
     {
         name: 'Архыз',
@@ -104,20 +109,45 @@ const addButton = document.querySelector('.profile__add-button');
 const renderList = () =>{
     const items = initialCards.map(element => getItems(element));
     cards.prepend(...items);
-    console.log(cards);
 }
+
+
+const handlerRemove = (evt) => {
+    evt.target.closest('.cards__item').remove();
+};
+
+const handlerLike = (evt) => {
+    evt.target.classList.toggle("cards__like-button_active");
+};
+
+const handlerImage = (evt) => {
+    console.log(evt);
+    popupImage.querySelector(".popup__subtitle").innerText=evt.target.alt;
+    popupImage.querySelector(".popup__image").src=evt.target.src;
+    popupImage.querySelector(".popup__image").alt=evt.target.alt;
+    popupImage.classList.toggle("popup_closed");
+};
+
 
 const getItems = (element) => {
     const card = template.content.cloneNode(true);
     card.querySelector(".cards__image").src=element.link
     card.querySelector(".cards__image").alt=element.name
     card.querySelector(".cards__title").innerText=element.name
-    console.log(card);
+    console.log(popupImage.querySelector(".popup__subtitle").alt)
+    //remove card button
+    const removeButton = card.querySelector(".cards__remove-button");
+    //like button
+    const likeButton = card.querySelector(".cards__like-button");
+    //open popupImage
+    const fullSizeImage = card.querySelector(".cards__image");
+    fullSizeImage.addEventListener('click', handlerImage);
+    likeButton.addEventListener('click', handlerLike);
+    removeButton.addEventListener('click', handlerRemove);
     return card;
 };
 
 const bindHandlers = (evt) => {
-    console.log(evt);
     evt.preventDefault();
     const item = getItems({
         name: cardName.value,

@@ -50,6 +50,13 @@
             <button type="submit" class="popup__save-button">Создать</button>
         </form>
     </div>
+    <div class="popup popup_type_image popup_closed">
+        <div  class="popup__image-container">
+            <button aria-label="Close" type="button" class="popup__close-image pointer-opacity"></button>
+            <img src="#" alt="#" class="popup__image">
+            <h2 class="popup__subtitle">#</h2>
+        </div>
+    </div>
     <template class="template">
         <div class="cards__item">
             <div class="cards__position">
@@ -58,7 +65,7 @@
             </div>
             <div class="cards__rectangle">
                 <h2 class="cards__title">#</h2>
-                <button type="button"  aria-label="кнопка лайк" class="cards__like-button pointer-opacity"></button>
+                <button type="button"  aria-label="кнопка лайк" class="cards__like-button cards__like-button_active pointer-opacity"></button>
             </div>
         </div>
     </template>
