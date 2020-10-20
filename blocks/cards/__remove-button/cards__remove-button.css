@@ -1,5 +1,8 @@
-.cards__like-button{
-    background-image: url(../../../images/like_button.svg);
+.cards__remove-button{
+    background-image: url(../../../images/trash_button.svg);
+    position: absolute;
+    top: 19px;
+    right: 11px;
     background-color: transparent;
     background-repeat: no-repeat;
     border: none;

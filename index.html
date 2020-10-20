@@ -27,54 +27,12 @@
             <button aria-label="добавить" type="button" class="profile__add-button pointer-opacity"></button>
         </section>
         <section class="cards">
-            <div class="cards__item">
-                <img class="cards__image " src="./images/karachaevsk.jpg" alt="карачаевск">
-                <div class="cards__rectangle">
-                    <h2 class="cards__title">Карачаевск</h2>
-                    <button type="button"  aria-label="кнопка лайк" class="cards__like-button pointer-opacity"></button>
-                </div>
-            </div>
-            <div class="cards__item">
-                <img class="cards__image" src="./images/gora_elbus.jpg" alt="карачаевск">
-                <div class="cards__rectangle">
-                    <h2 class="cards__title">Гора Эльбрус</h2>
-                    <button type="button"  aria-label="кнопка лайк" class="cards__like-button pointer-opacity"></button>
-                </div>
-            </div>
-            <div class="cards__item">
-                <img class="cards__image" src="./images/dombay2.jpg" alt="Домбай">
-                <div class="cards__rectangle">
-                    <h2 class="cards__title">Домбай</h2>
-                    <button type="button"  aria-label="кнопка лайк" class="cards__like-button pointer-opacity"></button>
-                </div>
-            </div>
-            <div class="cards__item">
-                <img class="cards__image" src="./images/gora_elbus2.jpg" alt="Гора Эльбрус">
-                <div class="cards__rectangle">
-                    <h2 class="cards__title">Гора Эльбрус</h2>
-                    <button type="button"  aria-label="кнопка лайк" class="cards__like-button pointer-opacity"></button>
-                </div>
-            </div>
-            <div class="cards__item">
-                <img class="cards__image" src="./images/karachaevsk2.jpg" alt="Домбай">
-                <div class="cards__rectangle">
-                    <h2 class="cards__title">Домбай</h2>
-                    <button type="button"  aria-label="кнопка лайк" class="cards__like-button pointer-opacity"></button>
-                </div>
-            </div>
-            <div class="cards__item">
-                <img class="cards__image" src="./images/cherkesia.jpg" alt="Карачаево-Черкесия">
-                <div class="cards__rectangle">
-                    <h2 class="cards__title">Карачаево-Черкесия</h2>
-                    <button type="button"  aria-label="кнопка лайк" class="cards__like-button pointer-opacity"></button>
-                </div>
-            </div>
         </section>
     </main>
     <footer class="footer">
         <p class="footer__author">&copy; 2020. Mesto Russia</p>
     </footer>
-    <div class="popup popup_closed">
+    <div class="popup popup_type_edit popup_closed">
         <form name="profile_form" class="popup__container">
             <button aria-label="Close" type="button" class="popup__close-image pointer-opacity"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
@@ -83,6 +41,34 @@
             <button type="submit" class="popup__save-button">Сохранить</button>
         </form>
     </div>
+    <div class="popup popup_type_new-card popup_closed">
+        <form name="profile_form" class="popup__container">
+            <button aria-label="Close" type="button" class="popup__close-image pointer-opacity"></button>
+            <h2 class="popup__title">Новое место</h2>
+            <input type="text" name="profile_name" placeholder="Название" class="popup__text-row popup__input-name">
+            <input type="text" name="profile_job" placeholder="Ссылка на картинку" class="popup__text-row popup__input-profession">
+            <button type="submit" class="popup__save-button">Создать</button>
+        </form>
+    </div>
+    <div class="popup popup_type_image popup_closed">
+        <div  class="popup__image-container">
+            <button aria-label="Close" type="button" class="popup__close-image pointer-opacity"></button>
+            <img src="#" alt="#" class="popup__image">
+            <h2 class="popup__subtitle">#</h2>
+        </div>
+    </div>
+    <template class="template">
+        <div class="cards__item">
+            <div class="cards__position">
+                <img class="cards__image " src="#" alt="#">
+                <button type="button"  aria-label="кнопка удалить" class="cards__remove-button pointer-opacity"></button>
+            </div>
+            <div class="cards__rectangle">
+                <h2 class="cards__title">#</h2>
+                <button type="button"  aria-label="кнопка лайк" class="cards__like-button cards__like-button_active pointer-opacity"></button>
+            </div>
+        </div>
+    </template>
     <script src="./scripts/index.js"></script>
 </body>
 </html>

@@ -1,0 +1,4 @@
+.cards__like-button_active{
+    display: block;
+    background-image: url(../../../../images/like_button.svg);
+}
