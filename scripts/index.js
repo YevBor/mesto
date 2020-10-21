@@ -97,7 +97,7 @@ buttonClosePopupImage.addEventListener("click", function () {
 });
 
 const renderList = () => {
-    const items = initialCards.map(element => getItems(element));
+    const items = initialCards.map(element => getItem(element));
     cards.prepend(...items);
 };
 
@@ -109,16 +109,16 @@ const handlerLike = (evt) => {
     evt.target.classList.toggle("cards__like-button_active");
 };
 
-const handlerImage = (evt) => {
-    popupImageSub.innerText = evt.target.alt;
-    popupFullImage.src = evt.target.src;
-    popupFullImage.alt = evt.target.alt;
+const handlerImage = (element) => {
+    popupImageSub.innerText = element.name;
+    popupFullImage.src = element.link;
+    popupFullImage.alt = element.name;
     togglePopup(popupImage);
 
 };
 
 
-const getItems = (element) => {
+const getItem = (element) => {
     const card = template.content.cloneNode(true);
     const cardImage = card.querySelector(".cards__image");
     const removeButton = card.querySelector(".cards__remove-button");
@@ -126,16 +126,16 @@ const getItems = (element) => {
     cardImage.src = element.link
     cardImage.alt = element.name
     card.querySelector(".cards__title").innerText = element.name
-    cardImage.addEventListener('click', handlerImage);
+    cardImage.addEventListener('click', () => handlerImage(element));
     likeButton.addEventListener('click', handlerLike);
     removeButton.addEventListener('click', handlerRemove);
     return card;
-    
+
 };
 
-const bindHandlers = (evt) => {
+const handleSubmitCard = (evt) => {
     evt.preventDefault();
-    const item = getItems({
+    const item = getItem({
         name: cardName.value,
         link: cardUrl.value
     })
@@ -145,6 +145,6 @@ const bindHandlers = (evt) => {
     togglePopup(popupNewCard);
 };
 
-addCardForm.addEventListener('submit', bindHandlers);
+addCardForm.addEventListener('submit', handleSubmitCard);
 
 renderList()
