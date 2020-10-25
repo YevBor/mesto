@@ -55,8 +55,43 @@ const addCardForm = document.querySelector(".popup_type_new-card .popup__contain
 const cards = document.querySelector('.cards');
 //cards
 const cardImport = document.querySelector(".cards__item");
-
 const addButton = document.querySelector('.profile__add-button');
+
+//forms
+
+const typeEditForm = document.forms.edit_form;
+const nameInputEditForm = typeEditForm.querySelector(".popup_type_edit .popup__input-name");
+const jobInputEditForm = typeEditForm.querySelector(".popup_type_edit .popup__input-profession");
+
+function showError(input){
+    const errorElement = typeEditForm.querySelector(`#${input.id}-error`);
+};
+
+function hideError(input){
+    const errorElement = typeEditForm.querySelector(`#${input.id}-error`);
+};
+
+
+function checkInputValidity(input) {
+    console.log("in check validity");
+    if (input.checkValidity()) {
+        hideError(input);
+        console.log("true");
+    } else {
+        console.log("false");
+        showError(input);
+        
+    }
+};
+
+
+typeEditForm.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+});
+
+nameInputEditForm.addEventListener("input", (evt) =>{
+    checkInputValidity(evt.target);
+})
 
 
 
