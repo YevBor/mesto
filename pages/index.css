@@ -43,6 +43,8 @@
 @import url(../blocks/popup/__text-row/popup__text-row.css);
 @import url(../blocks/popup/__image/popup__image.css);
 @import url(../blocks/popup/__subtitle/popup__subtitle.css);
+@import url(../blocks/popup/__text-row/_state_invalid/popup__text-row_state_invalid.css);
+@import url(../blocks/popup/__error/popup__error.css);
 /* special classes */
 @import url(../blocks/pointer-opacity/pointer-opacity.css);
 

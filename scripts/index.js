@@ -65,10 +65,14 @@ const jobInputEditForm = typeEditForm.querySelector(".popup_type_edit .popup__in
 
 function showError(input){
     const errorElement = typeEditForm.querySelector(`#${input.id}-error`);
+    errorElement.textContent = input.validationMessage;
+    input.classList.add('popup__text-row_state_invalid');
 };
 
 function hideError(input){
     const errorElement = typeEditForm.querySelector(`#${input.id}-error`);
+    input.classList.remove('popup__text-row_state_invalid');
+    errorElement.textContent ='';
 };
 
 
