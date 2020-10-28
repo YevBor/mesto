@@ -128,8 +128,11 @@ const addButton = document.querySelector('.profile__add-button');
 
 
 
+
 function togglePopup(popup) {
     popup.classList.toggle("popup_closed");
+    popupOpenChecker(popup);
+    console.log(popup.classList.contains('popup_closed'))   
 }
 
 function formSubmitHandler(evt) {
@@ -140,12 +143,71 @@ function formSubmitHandler(evt) {
 }
 
 editProfileForm.addEventListener('submit', formSubmitHandler);
+//////////////////////////////////////////////////////////////////
+// const overlay = document.querySelector('.popup__overlay');
+function key(evt, popup){
+    if(evt.key === 'Escape'){
+        console.log(evt);
+        togglePopup(popup);
+    }
+};
+
+
+function popupOpenChecker(popup) {
+    console.log(popup.classList.contains('popup_closed'));
+    if (!popup.classList.contains('popup_closed')) {
+        console.log('Ybral');
+        document.addEventListener('keydown', (evt) => {
+            key(evt, popup);
+        });
+    } else {
+        console.log('Ybral');
+        document.removeEventListener('keydown', key);
+    }
+
+};
+
+
+// const onClickPopupOverlay = (evt) => {
+//     if (evt.target === evt.currentTarget){
+//         console.log(evt.target)
+//     }
+// }
+
+function onClickPopupOverlay(popup) {
+    popup.addEventListener('click', function (evt){
+        if (evt.target === evt.currentTarget){
+            togglePopup(popup);
+            // popup.classList.add('popup_closed');
+        } 
+    });
+};
+// const form = document.querySelector('.popup_type_edit .popup__container')
+function onKeyDownClose(popup) {
+    console.log('hello');
+    document.addEventListener('keydown', key);
+    // function (evt) {
+    //     console.log(evt);
+    //     if(evt.key === 'Escape'){
+    //         console.log('Molodec');
+    //     }
+    // });
+}
+
+
+
+///////////////////////////////////////////////////////////////////
 
 buttonOpenPopupEdit.addEventListener("click", function () {
     nameInput.value = changeInputName.textContent;
     jobInput.value = changeInputJob.textContent;
     togglePopup(popupEdit);
+    onClickPopupOverlay(popupEdit);
+    onKeyDownClose(popupEdit);
+    // popupEdit.addEventListener('click', onClickPopupOverlay);
 });
+
+
 buttonClosePopupEdit.addEventListener("click", function () {
     togglePopup(popupEdit);
 });
@@ -154,6 +216,7 @@ buttonOpenPopupNewCard.addEventListener("click", function () {
     cardName.value = "";
     cardUrl.value = "";
     togglePopup(popupNewCard);
+    onClickPopupOverlay(popupNewCard);
 });
 
 buttonClosePopupNewCard.addEventListener("click", function () {
@@ -182,6 +245,7 @@ const handlerImage = (element) => {
     popupFullImage.src = element.link;
     popupFullImage.alt = element.name;
     togglePopup(popupImage);
+    onClickPopupOverlay(popupImage);
 
 };
 

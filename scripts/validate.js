@@ -37,7 +37,6 @@ function setEventListeners(formElement) {
 
 function enableValidation() {
     const formElements = Array.from(document.querySelectorAll('.popup__container'));
-    console.log(formElements);
     formElements.forEach(form => {
         form.addEventListener("submit", (evt) => {
             evt.preventDefault();
