@@ -127,12 +127,9 @@ const addButton = document.querySelector('.profile__add-button');
 // enableValidation();
 
 
-
-
 function togglePopup(popup) {
-    popup.classList.toggle("popup_closed");
     popupOpenChecker(popup);
-    console.log(popup.classList.contains('popup_closed'))   
+    popup.classList.toggle("popup_closed");
 }
 
 function formSubmitHandler(evt) {
@@ -145,36 +142,41 @@ function formSubmitHandler(evt) {
 editProfileForm.addEventListener('submit', formSubmitHandler);
 //////////////////////////////////////////////////////////////////
 // const overlay = document.querySelector('.popup__overlay');
-function key(evt, popup){
+function handleKeyDown(evt, popup){
+    const element = evt.target;
     if(evt.key === 'Escape'){
-        console.log(evt);
-        togglePopup(popup);
+        // console.log(evt.target.classList.contains("popup_closed"));
+        console.log(evt.currentTarget.querySelector(".popup__overlay"));
+        // togglePopup(popupEdit);
     }
 };
 
 
 function popupOpenChecker(popup) {
-    console.log(popup.classList.contains('popup_closed'));
-    if (!popup.classList.contains('popup_closed')) {
-        console.log('Ybral');
-        document.addEventListener('keydown', (evt) => {
-            key(evt, popup);
-        });
+    if (popup.classList.contains('popup_closed')) {
+        console.log('Dobavil');
+        document.addEventListener('keydown', handleKeyDown);
+        // document.addEventListener('keydown', function los(evt){
+        //     handleKeyDown(evt, popup);
+        // });
     } else {
         console.log('Ybral');
-        document.removeEventListener('keydown', key);
+        document.removeEventListener('keydown', handleKeyDown);
+        // document.removeEventListener('keydown', function los(evt){
+        //     handleKeyDown(evt, popup);
+        // });
     }
 
 };
 
 
-// const onClickPopupOverlay = (evt) => {
+// const onClickClosePopupOverlay = (evt) => {
 //     if (evt.target === evt.currentTarget){
 //         console.log(evt.target)
 //     }
 // }
 
-function onClickPopupOverlay(popup) {
+function onClickClosePopupOverlay(popup) {
     popup.addEventListener('click', function (evt){
         if (evt.target === evt.currentTarget){
             togglePopup(popup);
@@ -182,17 +184,8 @@ function onClickPopupOverlay(popup) {
         } 
     });
 };
-// const form = document.querySelector('.popup_type_edit .popup__container')
-function onKeyDownClose(popup) {
-    console.log('hello');
-    document.addEventListener('keydown', key);
-    // function (evt) {
-    //     console.log(evt);
-    //     if(evt.key === 'Escape'){
-    //         console.log('Molodec');
-    //     }
-    // });
-}
+
+
 
 
 
@@ -202,9 +195,7 @@ buttonOpenPopupEdit.addEventListener("click", function () {
     nameInput.value = changeInputName.textContent;
     jobInput.value = changeInputJob.textContent;
     togglePopup(popupEdit);
-    onClickPopupOverlay(popupEdit);
-    onKeyDownClose(popupEdit);
-    // popupEdit.addEventListener('click', onClickPopupOverlay);
+    onClickClosePopupOverlay(popupEdit);
 });
 
 
@@ -216,7 +207,7 @@ buttonOpenPopupNewCard.addEventListener("click", function () {
     cardName.value = "";
     cardUrl.value = "";
     togglePopup(popupNewCard);
-    onClickPopupOverlay(popupNewCard);
+    onClickClosePopupOverlay(popupNewCard);
 });
 
 buttonClosePopupNewCard.addEventListener("click", function () {
@@ -245,8 +236,7 @@ const handlerImage = (element) => {
     popupFullImage.src = element.link;
     popupFullImage.alt = element.name;
     togglePopup(popupImage);
-    onClickPopupOverlay(popupImage);
-
+    onClickClosePopupOverlay(popupImage);
 };
 
 
