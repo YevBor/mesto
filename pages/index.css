@@ -33,6 +33,7 @@
 @import url(../blocks/footer/__author/footer__author.css);
 /* popup */
 @import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/__overlay/popup__overlay.css);
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__input-name/popup__input-name.css);
@@ -43,6 +44,9 @@
 @import url(../blocks/popup/__text-row/popup__text-row.css);
 @import url(../blocks/popup/__image/popup__image.css);
 @import url(../blocks/popup/__subtitle/popup__subtitle.css);
+@import url(../blocks/popup/__text-row/_state_invalid/popup__text-row_state_invalid.css);
+@import url(../blocks/popup/__error/popup__error.css);
+@import url(../blocks/popup/__save-button/_invalid/popup__save-button_invalid.css);
 /* special classes */
 @import url(../blocks/pointer-opacity/pointer-opacity.css);
 

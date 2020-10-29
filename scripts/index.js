@@ -55,12 +55,11 @@ const addCardForm = document.querySelector(".popup_type_new-card .popup__contain
 const cards = document.querySelector('.cards');
 //cards
 const cardImport = document.querySelector(".cards__item");
-
 const addButton = document.querySelector('.profile__add-button');
 
 
-
 function togglePopup(popup) {
+    handleEscListener(popup);
     popup.classList.toggle("popup_closed");
 }
 
@@ -72,12 +71,51 @@ function formSubmitHandler(evt) {
 }
 
 editProfileForm.addEventListener('submit', formSubmitHandler);
+//////////////////////////////////////////////////////////////////
+function handleKeyDown(evt){
+    if(evt.key === 'Escape'){
+        document.removeEventListener('keydown', handleKeyDown);
+        const elements = Array.from(evt.currentTarget.querySelectorAll(".popup__overlay"));
+        addClosePopup(elements);
+    }
+};
+
+function addClosePopup(elements){
+    elements.forEach(form => {
+        if (!form.classList.contains('popup_closed')){
+            form.classList.add('popup_closed');
+        };
+    })
+}
+
+
+function handleEscListener(popup) {
+    if (popup.classList.contains('popup_closed')) {
+        document.addEventListener('keydown', handleKeyDown);
+    } else{
+        document.removeEventListener('keydown', handleKeyDown);
+    }
+};
+
+
+function onClickClosePopupOverlay(popup) {
+    popup.addEventListener('click', function (evt){
+        if (evt.target === evt.currentTarget){
+            togglePopup(popup);
+        } 
+    });
+};
+
+///////////////////////////////////////////////////////////////////
 
 buttonOpenPopupEdit.addEventListener("click", function () {
     nameInput.value = changeInputName.textContent;
     jobInput.value = changeInputJob.textContent;
     togglePopup(popupEdit);
+    onClickClosePopupOverlay(popupEdit);
 });
+
+
 buttonClosePopupEdit.addEventListener("click", function () {
     togglePopup(popupEdit);
 });
@@ -86,6 +124,7 @@ buttonOpenPopupNewCard.addEventListener("click", function () {
     cardName.value = "";
     cardUrl.value = "";
     togglePopup(popupNewCard);
+    onClickClosePopupOverlay(popupNewCard);
 });
 
 buttonClosePopupNewCard.addEventListener("click", function () {
@@ -114,7 +153,7 @@ const handlerImage = (element) => {
     popupFullImage.src = element.link;
     popupFullImage.alt = element.name;
     togglePopup(popupImage);
-
+    onClickClosePopupOverlay(popupImage);
 };
 
 
@@ -140,8 +179,6 @@ const handleSubmitCard = (evt) => {
         link: cardUrl.value
     })
     cards.prepend(item);
-    // cardName.value = "";
-    // cardUrl.value = "";
     togglePopup(popupNewCard);
 };
 
