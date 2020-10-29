@@ -128,7 +128,7 @@ const addButton = document.querySelector('.profile__add-button');
 
 
 function togglePopup(popup) {
-    popupOpenChecker(popup);
+    handleEscListener(popup);
     popup.classList.toggle("popup_closed");
 }
 
@@ -141,46 +141,37 @@ function formSubmitHandler(evt) {
 
 editProfileForm.addEventListener('submit', formSubmitHandler);
 //////////////////////////////////////////////////////////////////
-// const overlay = document.querySelector('.popup__overlay');
-function handleKeyDown(evt, popup){
-    const element = evt.target;
+function handleKeyDown(evt){
     if(evt.key === 'Escape'){
-        // console.log(evt.target.classList.contains("popup_closed"));
-        console.log(evt.currentTarget.querySelector(".popup__overlay"));
-        // togglePopup(popupEdit);
-    }
-};
-
-
-function popupOpenChecker(popup) {
-    if (popup.classList.contains('popup_closed')) {
-        console.log('Dobavil');
-        document.addEventListener('keydown', handleKeyDown);
-        // document.addEventListener('keydown', function los(evt){
-        //     handleKeyDown(evt, popup);
-        // });
-    } else {
-        console.log('Ybral');
         document.removeEventListener('keydown', handleKeyDown);
-        // document.removeEventListener('keydown', function los(evt){
-        //     handleKeyDown(evt, popup);
-        // });
+        const elements = Array.from(evt.currentTarget.querySelectorAll(".popup__overlay"));
+        addClosePopup(elements);
     }
-
 };
 
+function addClosePopup(elements){
+    elements.forEach(form => {
+        if (!form.classList.contains('popup_closed')){
+            form.classList.add('popup_closed');
+        };
+    })
+}
 
-// const onClickClosePopupOverlay = (evt) => {
-//     if (evt.target === evt.currentTarget){
-//         console.log(evt.target)
-//     }
-// }
+
+function handleEscListener(popup) {
+    if (popup.classList.contains('popup_closed')) {
+        document.addEventListener('keydown', handleKeyDown);
+    } else{
+        document.removeEventListener('keydown', handleKeyDown);
+        console.log('ybral');
+    }
+};
+
 
 function onClickClosePopupOverlay(popup) {
     popup.addEventListener('click', function (evt){
         if (evt.target === evt.currentTarget){
             togglePopup(popup);
-            // popup.classList.add('popup_closed');
         } 
     });
 };

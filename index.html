@@ -32,7 +32,7 @@
     <footer class="footer">
         <p class="footer__author">&copy; 2020. Mesto Russia</p>
     </footer>
-    <div class="popup popup_type_edit popup__overlay popup_closed">
+    <div class="popup popup_type_edit popup__overlay popup_closed" novalidate>
         <form name="edit_form" class="popup__container">
             <button aria-label="Close" type="button" class="popup__close-image pointer-opacity"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
@@ -44,7 +44,7 @@
         </form>
     </div>
     <div class="popup popup__overlay popup_type_new-card popup_closed">
-        <form name="new_form" class="popup__container">
+        <form name="new_form" class="popup__container" novalidate>
             <button aria-label="Close" type="button" class="popup__close-image pointer-opacity"></button>
             <h2 class="popup__title">Новое место</h2>
             <input required required minlength="2" maxlength="30" type="text" name="profile_name" placeholder="Название" class="popup__text-row popup__input-name" id="new-card-name">
