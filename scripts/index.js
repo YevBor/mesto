@@ -37,6 +37,7 @@ function togglePopup(popup) {
     });
     handleEscListener(popup);
     popup.classList.toggle("popup_closed");
+    popup.classList.toggle("popup_opened");
 }
 
 function formSubmitHandler(evt) {
@@ -51,8 +52,10 @@ editProfileForm.addEventListener('submit', formSubmitHandler);
 function handleKeyDown(evt){
     if(evt.key === 'Escape'){
         document.removeEventListener('keydown', handleKeyDown);
-        const elements = Array.from(evt.currentTarget.querySelectorAll(".popup__overlay"));
-        addClosePopup(elements);
+        // const elements = Array.from(evt.currentTarget.querySelectorAll(".popup__overlay"));
+        // addClosePopup(elements);
+        console.log(evt.currentTarget.querySelector('.popup_opened'));
+        togglePopup(evt.currentTarget.querySelector('.popup_opened'));
     }
 };
 
