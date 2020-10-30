@@ -48,14 +48,24 @@ function enableValidation(selectors) {
 
 function toggleButtonState(selectors, formElement, buttonElement){
     if (formElement.checkValidity()){
+        console.log("proshel proverku")
         buttonElement.classList.remove(selectors.inactiveButtonClass);
         buttonElement.disabled = false;
-    } else {
+    } 
+    else {
+        console.log("ne proshel")
         buttonElement.classList.add(selectors.inactiveButtonClass);
         buttonElement.disabled = true;
 
     };
 };
+
+function resetNewCardButton(popup){
+    const button_disable = popup.querySelector('.popup__save-button');
+    button_disable.classList.add('popup__save-button_invalid');
+    button_disable.disabled = true;
+};
+
 enableValidation({
     formSelector: '.popup__container',
     inputSelector: '.popup__text-row',
