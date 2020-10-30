@@ -30,6 +30,11 @@ const addCardForm = document.querySelector(".popup_type_new-card .popup__contain
 const cards = document.querySelector('.cards');
 
 function togglePopup(popup) {
+    popup.addEventListener('click', function (evt){
+        if (evt.target === evt.currentTarget){
+            togglePopup(popup);
+        } 
+    });
     handleEscListener(popup);
     popup.classList.toggle("popup_closed");
 }
@@ -69,13 +74,13 @@ function handleEscListener(popup) {
 };
 
 
-function onClickClosePopupOverlay(popup) {
-    popup.addEventListener('click', function (evt){
-        if (evt.target === evt.currentTarget){
-            togglePopup(popup);
-        } 
-    });
-};
+// function onClickClosePopupOverlay(popup) {
+//     popup.addEventListener('click', function (evt){
+//         if (evt.target === evt.currentTarget){
+//             togglePopup(popup);
+//         } 
+//     });
+// };
 
 ///////////////////////////////////////////////////////////////////
 
@@ -83,7 +88,12 @@ buttonOpenPopupEdit.addEventListener("click", function () {
     nameInput.value = changeInputName.textContent;
     jobInput.value = changeInputJob.textContent;
     togglePopup(popupEdit);
-    onClickClosePopupOverlay(popupEdit);
+    // onClickClosePopupOverlay(popupEdit);
+    // popupEdit.addEventListener('click', function (evt){
+    //     if (evt.target === evt.currentTarget){
+    //         togglePopup(popupEdit);
+    //     } 
+    // });
 });
 
 
@@ -97,7 +107,12 @@ buttonOpenPopupNewCard.addEventListener("click", function (evt) {
     console.log(evt.currentTarget);
     resetNewCardButton(popupNewCard)
     togglePopup(popupNewCard);
-    onClickClosePopupOverlay(popupNewCard);
+    // onClickClosePopupOverlay(popupNewCard);
+    // popupEdit.addEventListener('click', function (evt){
+    //     if (evt.target === evt.currentTarget){
+    //         togglePopup(popupEdit);
+    //     } 
+    // });
 });
 
 buttonClosePopupNewCard.addEventListener("click", function () {
@@ -126,7 +141,12 @@ const handlerImage = (element) => {
     popupFullImage.src = element.link;
     popupFullImage.alt = element.name;
     togglePopup(popupImage);
-    onClickClosePopupOverlay(popupImage);
+    // onClickClosePopupOverlay(popupImage);
+    // popupImage.addEventListener('click', function (evt){
+    //     if (evt.target === evt.currentTarget){
+    //         togglePopup(popupImage);
+    //     } 
+    // });
 };
 
 
