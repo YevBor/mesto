@@ -48,16 +48,13 @@ function formSubmitHandler(evt) {
 }
 
 editProfileForm.addEventListener('submit', formSubmitHandler);
-//////////////////////////////////////////////////////////////////
+
 function handleKeyDown(evt){
     if(evt.key === 'Escape'){
         document.removeEventListener('keydown', handleKeyDown);
-        // const elements = Array.from(evt.currentTarget.querySelectorAll(".popup__overlay"));
-        // addClosePopup(elements);
-        console.log(evt.currentTarget.querySelector('.popup_opened'));
         togglePopup(evt.currentTarget.querySelector('.popup_opened'));
     }
-};
+}
 
 function addClosePopup(elements){
     elements.forEach(form => {
@@ -74,29 +71,13 @@ function handleEscListener(popup) {
     } else{
         document.removeEventListener('keydown', handleKeyDown);
     }
-};
-
-
-// function onClickClosePopupOverlay(popup) {
-//     popup.addEventListener('click', function (evt){
-//         if (evt.target === evt.currentTarget){
-//             togglePopup(popup);
-//         } 
-//     });
-// };
-
-///////////////////////////////////////////////////////////////////
+}
 
 buttonOpenPopupEdit.addEventListener("click", function () {
     nameInput.value = changeInputName.textContent;
     jobInput.value = changeInputJob.textContent;
     togglePopup(popupEdit);
-    // onClickClosePopupOverlay(popupEdit);
-    // popupEdit.addEventListener('click', function (evt){
-    //     if (evt.target === evt.currentTarget){
-    //         togglePopup(popupEdit);
-    //     } 
-    // });
+   
 });
 
 
@@ -107,15 +88,8 @@ buttonClosePopupEdit.addEventListener("click", function () {
 buttonOpenPopupNewCard.addEventListener("click", function (evt) {
     cardName.value = "";
     cardUrl.value = "";
-    console.log(evt.currentTarget);
     resetNewCardButton(popupNewCard)
     togglePopup(popupNewCard);
-    // onClickClosePopupOverlay(popupNewCard);
-    // popupEdit.addEventListener('click', function (evt){
-    //     if (evt.target === evt.currentTarget){
-    //         togglePopup(popupEdit);
-    //     } 
-    // });
 });
 
 buttonClosePopupNewCard.addEventListener("click", function () {
@@ -144,12 +118,6 @@ const handlerImage = (element) => {
     popupFullImage.src = element.link;
     popupFullImage.alt = element.name;
     togglePopup(popupImage);
-    // onClickClosePopupOverlay(popupImage);
-    // popupImage.addEventListener('click', function (evt){
-    //     if (evt.target === evt.currentTarget){
-    //         togglePopup(popupImage);
-    //     } 
-    // });
 };
 
 
