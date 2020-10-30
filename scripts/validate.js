@@ -2,26 +2,23 @@ function showError(selectors, formElement, input){
     const errorElement = formElement.querySelector(`#${input.id}-error`);
     errorElement.textContent = input.validationMessage;
     input.classList.add(selectors.errorClass);
-};
+}
 
 function hideError(selectors, formElement, input){
     const errorElement = formElement.querySelector(`#${input.id}-error`);
     input.classList.remove(selectors.errorClass);
     errorElement.textContent = '';
-};
+}
 
 
 function checkInputValidity(selectors, formElement, input) {
-    console.log("in check validity");
     if (input.checkValidity()) {
         hideError(selectors, formElement, input);
-        console.log("true");
     } else {
-        console.log("false");
         showError(selectors, formElement, input);
         
     }
-};
+}
 
 function setEventListeners(selectors, formElement) {
     const inputElements = Array.from(formElement.querySelectorAll(selectors.inputSelector));
@@ -33,7 +30,7 @@ function setEventListeners(selectors, formElement) {
         });
     });
     toggleButtonState(selectors, formElement,buttonElement);
-};
+}
 
 function enableValidation(selectors) {
     const formElements = Array.from(document.querySelectorAll(selectors.formSelector));
@@ -50,12 +47,20 @@ function toggleButtonState(selectors, formElement, buttonElement){
     if (formElement.checkValidity()){
         buttonElement.classList.remove(selectors.inactiveButtonClass);
         buttonElement.disabled = false;
-    } else {
+    } 
+    else {
         buttonElement.classList.add(selectors.inactiveButtonClass);
         buttonElement.disabled = true;
 
-    };
-};
+    }
+}
+
+function resetNewCardButton(popup){
+    const button_disable = popup.querySelector('.popup__save-button');
+    button_disable.classList.add('popup__save-button_invalid');
+    button_disable.disabled = true;
+}
+
 enableValidation({
     formSelector: '.popup__container',
     inputSelector: '.popup__text-row',
