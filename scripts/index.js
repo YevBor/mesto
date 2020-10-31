@@ -36,7 +36,6 @@ function togglePopup(popup) {
         } 
     });
     handleEscListener(popup);
-    popup.classList.toggle("popup_closed");
     popup.classList.toggle("popup_opened");
 }
 
