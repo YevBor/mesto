@@ -29,31 +29,23 @@ const addCardForm = document.querySelector(".popup_type_new-card .popup__contain
 const closeOver = document.querySelectorAll(".popup_opened");
 const cards = document.querySelector('.cards');
 
+popupEdit.addEventListener('click', closePopupOverlay);
+popupNewCard.addEventListener('click', closePopupOverlay);
+popupImage.addEventListener('click', closePopupOverlay);
+
+
 function togglePopup(popup) {
-    // popup.addEventListener('click', function (evt){
-    //     if (evt.target === evt.currentTarget){
-    //         togglePopup(popup);
-    //     } 
-    // });
+    
     handleEscListener(popup);
     popup.classList.toggle("popup_opened");
 }
 
-// function closeOverlay(){
-//     closeOver.addEventListener('click', function (evt){
-//         if (evt.target === evt.currentTarget){
-//             console.log('hi');
-//             togglePopup(evt.currentTarget.querySelector('.popup_opened'));
-//         } 
-//     });
-// }
-
-// closeOver.addEventListener('click', function (evt){
-//     if (evt.target === evt.currentTarget){
-//         console.log('hi');
-//         togglePopup(evt.currentTarget.querySelector('.popup_opened'));
-//     } 
-// });
+function closePopupOverlay(evt){
+    if (evt.target === evt.currentTarget){
+        console.log(evt.currentTarget.querySelector('.popup_opened'));
+        togglePopup(evt.target);
+    } 
+}
 
 
 function formSubmitHandler(evt) {
@@ -165,4 +157,4 @@ const handleSubmitCard = (evt) => {
 addCardForm.addEventListener('submit', handleSubmitCard);
 
 renderList()
-// closeOverlay()
+
