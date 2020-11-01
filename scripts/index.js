@@ -26,18 +26,35 @@ const changeInputJob = document.querySelector(".profile__subtitle");
 
 const editProfileForm= document.querySelector(".popup_type_edit .popup__container");
 const addCardForm = document.querySelector(".popup_type_new-card .popup__container");
-
+const closeOver = document.querySelectorAll(".popup_opened");
 const cards = document.querySelector('.cards');
 
 function togglePopup(popup) {
-    popup.addEventListener('click', function (evt){
-        if (evt.target === evt.currentTarget){
-            togglePopup(popup);
-        } 
-    });
+    // popup.addEventListener('click', function (evt){
+    //     if (evt.target === evt.currentTarget){
+    //         togglePopup(popup);
+    //     } 
+    // });
     handleEscListener(popup);
     popup.classList.toggle("popup_opened");
 }
+
+// function closeOverlay(){
+//     closeOver.addEventListener('click', function (evt){
+//         if (evt.target === evt.currentTarget){
+//             console.log('hi');
+//             togglePopup(evt.currentTarget.querySelector('.popup_opened'));
+//         } 
+//     });
+// }
+
+// closeOver.addEventListener('click', function (evt){
+//     if (evt.target === evt.currentTarget){
+//         console.log('hi');
+//         togglePopup(evt.currentTarget.querySelector('.popup_opened'));
+//     } 
+// });
+
 
 function formSubmitHandler(evt) {
     evt.preventDefault(); 
@@ -57,15 +74,15 @@ function handleKeyDown(evt){
 
 function addClosePopup(elements){
     elements.forEach(form => {
-        if (!form.classList.contains('popup_closed')){
-            form.classList.add('popup_closed');
+        if (form.classList.contains('popup_opened')){
+            form.classList.remove('popup_opened');
         };
     })
 }
 
 
 function handleEscListener(popup) {
-    if (popup.classList.contains('popup_closed')) {
+    if (!popup.classList.contains('popup_opened')) {
         document.addEventListener('keydown', handleKeyDown);
     } else{
         document.removeEventListener('keydown', handleKeyDown);
@@ -148,3 +165,4 @@ const handleSubmitCard = (evt) => {
 addCardForm.addEventListener('submit', handleSubmitCard);
 
 renderList()
+// closeOverlay()

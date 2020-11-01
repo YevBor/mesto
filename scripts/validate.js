@@ -49,15 +49,22 @@ function toggleButtonState(selectors, formElement, buttonElement){
         buttonElement.disabled = false;
     } 
     else {
-        buttonElement.classList.add(selectors.inactiveButtonClass);
+        // buttonElement.classList.add(selectors.inactiveButtonClass);
+        addInactiveButtonClass(buttonElement);
         buttonElement.disabled = true;
 
     }
 }
 
+function addInactiveButtonClass(name){
+    name.classList.add('popup__save-button_invalid');
+}
+
+
 function resetNewCardButton(popup){
     const button_disable = popup.querySelector('.popup__save-button');
-    button_disable.classList.add('popup__save-button_invalid');
+    // button_disable.classList.add('popup__save-button_invalid');
+    addInactiveButtonClass(button_disable);
     button_disable.disabled = true;
 }
 
