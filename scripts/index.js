@@ -1,4 +1,4 @@
-
+import {Card} from './Card';
 
 const template = document.querySelector(".template");
 //popups open buttons
