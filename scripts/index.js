@@ -147,16 +147,16 @@ const getItem = (element) => {
 
 const handleSubmitCard = (evt) => {
     evt.preventDefault();
-    // const cardClass =new Card({
-    //     name: cardName.value,
-    //     link: cardUrl.value
-    // }, template1);
-    cardClass.render();
-    const item = getItem({
+    const cardClass =new Card({
         name: cardName.value,
         link: cardUrl.value
-    })
-    cards.prepend(item);
+    }, template1);
+    // const item = getItem({
+    //     name: cardName.value,
+    //     link: cardUrl.value
+    // })
+    // cards.prepend(item);
+    cards.prepend(cardClass.render());
     togglePopup(popupNewCard);
 };
 
