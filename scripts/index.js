@@ -1,5 +1,5 @@
-import {Card} from './Card';
-
+import {Card} from './Card.js';
+const template1 = '.template';
 const template = document.querySelector(".template");
 //popups open buttons
 const buttonOpenPopupEdit = document.querySelector(".profile__edit-button");
@@ -134,6 +134,7 @@ const getItem = (element) => {
     const cardImage = card.querySelector(".cards__image");
     const removeButton = card.querySelector(".cards__remove-button");
     const likeButton = card.querySelector(".cards__like-button");
+    // console.log(element.name);
     cardImage.src = element.link
     cardImage.alt = element.name
     card.querySelector(".cards__title").innerText = element.name
@@ -146,6 +147,11 @@ const getItem = (element) => {
 
 const handleSubmitCard = (evt) => {
     evt.preventDefault();
+    // const cardClass =new Card({
+    //     name: cardName.value,
+    //     link: cardUrl.value
+    // }, template1);
+    cardClass.render();
     const item = getItem({
         name: cardName.value,
         link: cardUrl.value
