@@ -1,28 +1,59 @@
+
 export class Card {
-    constructor(data, templateSelector){
+    constructor(data, templateSelector, openImage){
+        this._openImage = openImage
         this._text =  data.name;
         this._altText = data.name;
         this._link = data.link;
         this._template = document.querySelector(templateSelector).content.querySelector(".cards__item");
     }
-    _delete() {
-        this._content.remove();
+    _getTemplate() {
+        const cardElement = this._template.cloneNode(true);
+        return cardElement;
     }
-    _like(){
-        this._content.querySelector(".cards__like-button")
+
+    _setEventListeners() {
+        this._element.querySelector(".cards__like-button")
+        .addEventListener("click", () => this._handleLikeClick());
+        this._element.querySelector(".cards__remove-button")
+        .addEventListener("click", () => this._handleRemoveClick());
+        this._element.querySelector(".cards__image")
+        .addEventListener('click', () => this._handlerOpenImage());
+
+
+
+    }
+    _handlerOpenImage(){
+        // const popupOpenImage = document.querySelector(".popup_type_image");
+        // const popupImageSub = document.querySelector(".popup_type_image .popup__subtitle");
+        // const popupFullImage = document.querySelector(".popup_type_image .popup__image");
+        // popupImageSub.innerText = this._text;
+        // popupFullImage.src = this._link;
+        // popupFullImage.alt = this._altText;
+        // popupOpenImage.classList.toggle("popup_opened");
+        this._openImage(this._text, this._link);
+
+    }
+    _handleRemoveClick() {
+        this._element.remove();
+    }
+
+    _handleLikeClick() {
+        this._element.querySelector(".cards__like-button")
         .classList.toggle("cards__like-button_active");
     }
 
-
-
-    render (){
-        this._content =  this._template.cloneNode(true);
-        this._content.querySelector(".cards__title").innerText = this._text;
-        this._content.querySelector(".cards__image").alt = this._altText;
-        this._content.querySelector(".cards__image").src = this._link;
-        this._content.querySelector(".cards__remove-button").addEventListener("click", () => this._delete());
-        this._content.querySelector(".cards__like-button").addEventListener("click", () => this._like());
-        return this._content
-    }
-
+    generateCard() {
+        // Запишем разметку в приватное поле _element. 
+        // Так у других элементов появится доступ к ней.
+        this._element = this._getTemplate();
+      
+        // Добавим данные
+        this._element.querySelector(".cards__image").src = this._link;
+        this._element.querySelector(".cards__image").alt = this._altText;
+        this._element.querySelector(".cards__title").innerText = this._text;
+        this._setEventListeners();
+        // Вернём элемент наружу
+        return this._element;
+    } 
 }

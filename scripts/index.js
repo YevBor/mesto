@@ -1,5 +1,6 @@
 import {Card} from './Card.js';
 const template1 = '.template';
+
 const template = document.querySelector(".template");
 //popups open buttons
 const buttonOpenPopupEdit = document.querySelector(".profile__edit-button");
@@ -108,10 +109,10 @@ buttonClosePopupImage.addEventListener("click", function () {
     togglePopup(popupImage);
 });
 
-const renderList = () => {
+/*const renderList = () => {
     const items = initialCards.map(element => getItem(element));
     cards.prepend(...items);
-};
+};*/
 
 const handlerRemove = (evt) => {
     evt.target.closest('.cards__item').remove();
@@ -121,12 +122,20 @@ const handlerLike = (evt) => {
     evt.target.classList.toggle("cards__like-button_active");
 };
 
-const handlerImage = (element) => {
-    popupImageSub.innerText = element.name;
-    popupFullImage.src = element.link;
-    popupFullImage.alt = element.name;
+// const handlerImage = (element) => {
+//     popupImageSub.innerText = element.name;
+//     popupFullImage.src = element.link;
+//     popupFullImage.alt = element.name;
+//     togglePopup(popupImage);
+// };
+
+function openImage(text, link){
+    popupImageSub.innerText = text;
+    popupFullImage.src = link;
+    popupFullImage.alt = text;
     togglePopup(popupImage);
-};
+}
+
 
 
 const getItem = (element) => {
@@ -138,9 +147,9 @@ const getItem = (element) => {
     cardImage.src = element.link
     cardImage.alt = element.name
     card.querySelector(".cards__title").innerText = element.name
-    cardImage.addEventListener('click', () => handlerImage(element));
-    likeButton.addEventListener('click', handlerLike);
-    removeButton.addEventListener('click', handlerRemove);
+    // cardImage.addEventListener('click', () => handlerImage(element));
+    // likeButton.addEventListener('click', handlerLike);
+    // removeButton.addEventListener('click', handlerRemove);
     return card;
 
 };
@@ -156,11 +165,24 @@ const handleSubmitCard = (evt) => {
     //     link: cardUrl.value
     // })
     // cards.prepend(item);
-    cards.prepend(cardClass.render());
+    cards.prepend(cardClass.generateCard());
     togglePopup(popupNewCard);
 };
 
 addCardForm.addEventListener('submit', handleSubmitCard);
 
-renderList()
+//renderList()
+
+
+
+
+initialCards.forEach((item) => {
+  // Создадим экземпляр карточки
+  const card = new Card(item, template1, openImage);
+  // Создаём карточку и возвращаем наружу
+  const cardElement = card.generateCard();
+
+  // Добавляем в DOM
+  cards.prepend(cardElement);
+});
 
