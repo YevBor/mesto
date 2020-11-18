@@ -1,5 +1,5 @@
 
-# Project 6: Mesto
+# Project 7: Mesto
 This project describes profiles of people with beatiful pictures
 
 
@@ -8,7 +8,8 @@ Responsive layout for design theme from Figma.My fourth project within Yandex pr
 The main purpose of the project is to learn how responsive layout works on different devices 
 The functionality of this project includes HTML, CSS and JS.
 
-Implementing JS into the code, for open Popup and form validation.
+Implemented JS into the code, created new two Classes.
+
 
 
 **Mesto**
