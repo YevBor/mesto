@@ -24,13 +24,6 @@ export class Card {
 
     }
     _handlerOpenImage(){
-        // const popupOpenImage = document.querySelector(".popup_type_image");
-        // const popupImageSub = document.querySelector(".popup_type_image .popup__subtitle");
-        // const popupFullImage = document.querySelector(".popup_type_image .popup__image");
-        // popupImageSub.innerText = this._text;
-        // popupFullImage.src = this._link;
-        // popupFullImage.alt = this._altText;
-        // popupOpenImage.classList.toggle("popup_opened");
         this._openImage(this._text, this._link);
 
     }
@@ -44,16 +37,11 @@ export class Card {
     }
 
     generateCard() {
-        // Запишем разметку в приватное поле _element. 
-        // Так у других элементов появится доступ к ней.
         this._element = this._getTemplate();
-      
-        // Добавим данные
         this._element.querySelector(".cards__image").src = this._link;
         this._element.querySelector(".cards__image").alt = this._altText;
         this._element.querySelector(".cards__title").innerText = this._text;
         this._setEventListeners();
-        // Вернём элемент наружу
         return this._element;
     } 
 }

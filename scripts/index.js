@@ -1,6 +1,6 @@
 import {Card} from './Card.js';
-
-const template1 = '.template';
+import {FormValidator} from './FormValidator.js';
+const elementTemplate = '.template';
 
 const template = document.querySelector(".template");
 //popups open buttons
@@ -74,7 +74,6 @@ function addClosePopup(elements){
     })
 }
 
-
 function handleEscListener(popup) {
     if (!popup.classList.contains('popup_opened')) {
         document.addEventListener('keydown', handleKeyDown);
@@ -110,25 +109,6 @@ buttonClosePopupImage.addEventListener("click", function () {
     togglePopup(popupImage);
 });
 
-/*const renderList = () => {
-    const items = initialCards.map(element => getItem(element));
-    cards.prepend(...items);
-};*/
-
-// const handlerRemove = (evt) => {
-//     evt.target.closest('.cards__item').remove();
-// };
-
-// const handlerLike = (evt) => {
-//     evt.target.classList.toggle("cards__like-button_active");
-// };
-
-// const handlerImage = (element) => {
-//     popupImageSub.innerText = element.name;
-//     popupFullImage.src = element.link;
-//     popupFullImage.alt = element.name;
-//     togglePopup(popupImage);
-// };
 
 function openImage(text, link){
     popupImageSub.innerText = text;
@@ -137,127 +117,36 @@ function openImage(text, link){
     togglePopup(popupImage);
 }
 
-
-
-// const getItem = (element) => {
-//     const card = template.content.cloneNode(true);
-//     const cardImage = card.querySelector(".cards__image");
-//     const removeButton = card.querySelector(".cards__remove-button");
-//     const likeButton = card.querySelector(".cards__like-button");
-//     // console.log(element.name);
-//     cardImage.src = element.link
-//     cardImage.alt = element.name
-//     card.querySelector(".cards__title").innerText = element.name
-//     // cardImage.addEventListener('click', () => handlerImage(element));
-//     // likeButton.addEventListener('click', handlerLike);
-//     // removeButton.addEventListener('click', handlerRemove);
-//     return card;
-
-// };
-
 const handleSubmitCard = (evt) => {
     evt.preventDefault();
     const cardClass =new Card({
         name: cardName.value,
         link: cardUrl.value
-    }, template1, openImage);
-    // const item = getItem({
-    //     name: cardName.value,
-    //     link: cardUrl.value
-    // })
-    // cards.prepend(item);
+    }, elementTemplate, openImage);
     cards.prepend(cardClass.generateCard());
     togglePopup(popupNewCard);
 };
 
 addCardForm.addEventListener('submit', handleSubmitCard);
 
-//renderList()
-
-
-
-
 initialCards.forEach((item) => {
-  // Создадим экземпляр карточки
-  const card = new Card(item, template1, openImage);
-  // Создаём карточку и возвращаем наружу
+  const card = new Card(item, elementTemplate, openImage);
   const cardElement = card.generateCard();
-
-  // Добавляем в DOM
   cards.prepend(cardElement);
 });
 
-
-import {FormValidator} from './FormValidator.js';
-
-// function showError(selectors, formElement, input){
-//     const errorElement = formElement.querySelector(`#${input.id}-error`);
-//     errorElement.textContent = input.validationMessage;
-//     input.classList.add(selectors.errorClass);
-// }
-
-// function hideError(selectors, formElement, input){
-//     const errorElement = formElement.querySelector(`#${input.id}-error`);
-//     input.classList.remove(selectors.errorClass);
-//     errorElement.textContent = '';
-// }
-
-
-// function checkInputValidity(selectors, formElement, input) {
-//     if (input.checkValidity()) {
-//         hideError(selectors, formElement, input);
-//     } else {
-//         showError(selectors, formElement, input);
-        
-//     }
-// }
-
-// function setEventListeners(selectors, formElement) {
-//     const inputElements = Array.from(formElement.querySelectorAll(selectors.inputSelector));
-//     const buttonElement = formElement.querySelector(selectors.submitButtonSelector);
-//     inputElements.forEach((input) => {
-//         input.addEventListener('input', (evt) =>{
-//             checkInputValidity(selectors, formElement, evt.target);
-//             toggleButtonState(selectors, formElement, buttonElement);
-//         });
-//     });
-//     toggleButtonState(selectors, formElement,buttonElement);
-// }
 
 function enableValidation(selectors) {
     const formElements = Array.from(document.querySelectorAll(selectors.formSelector));
     formElements.forEach(form => {
         const formValidator = new FormValidator(selectors, form);
-        formValidator.generateForm();
-        // form.addEventListener("submit", (evt) => {
-        //     evt.preventDefault();
-        // });
-        // setEventListeners(selectors, form);
-        
+        formValidator.generateForm();        
     });
 }
 
-
-// function toggleButtonState(selectors, formElement, buttonElement){
-//     if (formElement.checkValidity()){
-//         buttonElement.classList.remove(selectors.inactiveButtonClass);
-//         buttonElement.disabled = false;
-//     } 
-//     else {
-//         addInactiveButtonClass(buttonElement);
-//         buttonElement.disabled = true;
-
-//     }
-// }
-
-function addInactiveButtonClass(name){
-    name.classList.add('popup__save-button_invalid');
-}
-
-
 function resetNewCardButton(popup){
     const button_disable = popup.querySelector('.popup__save-button');
-    addInactiveButtonClass(button_disable);
+    button_disable.classList.add('popup__save-button_invalid');
     button_disable.disabled = true;
 }
 

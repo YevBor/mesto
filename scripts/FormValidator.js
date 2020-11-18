@@ -7,10 +7,8 @@ export class FormValidator{
         this._inputErrorClass = selectors.inputErrorClass;
         this._errorClass = selectors.errorClass;
         this._formElement = formElement;
-        console.log(1);
     }
     _getForm() {
-        console.log(2);
         const formElement = this._formElement.cloneNode(true);
         return formElement
         
@@ -55,9 +53,7 @@ export class FormValidator{
     }
 
     _setEventListeners(){
-        console.log(3);
         const inputElements = Array.from(this._formElement.querySelectorAll(this._inputSelector));
-        console.log(inputElements);
         const buttonElement = this._formElement.querySelector(this._submitButtonSelector);
         inputElements.forEach((input) => {
             input.addEventListener('input', (evt) =>{
@@ -71,13 +67,11 @@ export class FormValidator{
    
 
     generateForm(){
-        console.log(4);
         this._element = this._getForm();
         this._element.addEventListener("submit", (evt) => {
             evt.preventDefault();
         });
-        this._setEventListeners();
-            
+        this._setEventListeners();       
     }
     
 } 
