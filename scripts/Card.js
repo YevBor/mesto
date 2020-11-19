@@ -1,7 +1,7 @@
 
 export class Card {
     constructor(data, templateSelector, openImage){
-        this._openImage = openImage
+        this._openImage = openImage;
         this._text =  data.name;
         this._altText = data.name;
         this._link = data.link;
@@ -15,12 +15,12 @@ export class Card {
     _setEventListeners() {
         this._element.querySelector(".cards__like-button")
         .addEventListener("click", () => this._handleLikeClick());
+
         this._element.querySelector(".cards__remove-button")
         .addEventListener("click", () => this._handleRemoveClick());
+
         this._element.querySelector(".cards__image")
         .addEventListener('click', () => this._handlerOpenImage());
-
-
 
     }
     _handlerOpenImage(){
@@ -38,8 +38,9 @@ export class Card {
 
     generateCard() {
         this._element = this._getTemplate();
-        this._element.querySelector(".cards__image").src = this._link;
-        this._element.querySelector(".cards__image").alt = this._altText;
+        const elementCardImage = this._element.querySelector(".cards__image");
+        elementCardImage.src = this._link;
+        elementCardImage.alt = this._altText;
         this._element.querySelector(".cards__title").innerText = this._text;
         this._setEventListeners();
         return this._element;
