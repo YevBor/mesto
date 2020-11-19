@@ -8,13 +8,7 @@ export class FormValidator{
         this._errorClass = selectors.errorClass;
         this._formElement = formElement;
     }
-    _getForm() {
-        const formElement = this._formElement.cloneNode(true);
-        return formElement
-        
-    }
-
-
+   
     _showError(input){
         const errorElement = this._formElement.querySelector(`#${input.id}-error`);
         errorElement.textContent = input.validationMessage;
@@ -49,7 +43,7 @@ export class FormValidator{
     }
 
     _addInactiveButtonClass(name){
-        name.classList.add('popup__save-button_invalid');
+        name.classList.add(this._inactiveButtonClass);
     }
 
     _setEventListeners(){
@@ -67,7 +61,7 @@ export class FormValidator{
    
 
     generateForm(){
-        this._element = this._getForm();
+        this._element = this._formElement;
         this._element.addEventListener("submit", (evt) => {
             evt.preventDefault();
         });
