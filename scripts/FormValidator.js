@@ -61,8 +61,7 @@ export class FormValidator{
    
 
     generateForm(){
-        this._element = this._formElement;
-        this._element.addEventListener("submit", (evt) => {
+        this._element = this._formElement.addEventListener("submit", (evt) => {
             evt.preventDefault();
         });
         this._setEventListeners();       

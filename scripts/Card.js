@@ -20,10 +20,10 @@ export class Card {
         .addEventListener("click", () => this._handleRemoveClick());
 
         this._element.querySelector(".cards__image")
-        .addEventListener('click', () => this._handlerOpenImage());
+        .addEventListener('click', () => this._handleOpenImage());
 
     }
-    _handlerOpenImage(){
+    _handleOpenImage(){
         this._openImage(this._text, this._link);
 
     }
