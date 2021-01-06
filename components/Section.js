@@ -5,7 +5,6 @@ export class Section {
         this._container = containerSelector;
     }
     addItem (element){
-        console.log(element);
         this._container.prepend(element);
     }
     renderItems () {

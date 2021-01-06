@@ -1,4 +1,5 @@
 import { Section } from '../components/Section.js';
+import { Popup } from '../components/Popup.js';
 import {Card} from '../scripts/Card.js';
 import {FormValidator} from '../scripts/FormValidator.js';
 import {initialCards} from '../scripts/initialCards.js';
@@ -14,7 +15,6 @@ popupImage.addEventListener('click', closePopupOverlay);
 
 
 function togglePopup(popup) {
-    
     handleEscListener(popup);
     popup.classList.toggle("popup_opened");
 }
@@ -145,8 +145,13 @@ const cardList = new Section({
   cards
 );
 
+const popupWindow = new Popup()
+
 
 cardList.renderItems();
+
+// const openImage = new PopupWithImage(popupImage);
+// openImage.setEventListeners();
 
 
   
