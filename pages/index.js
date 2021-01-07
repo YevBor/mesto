@@ -29,14 +29,14 @@ import {PopupWithForm} from '../components/PopupWithForm.js';
 // }
 
 
-function formSubmitHandler(evt) {
-    evt.preventDefault(); 
-    changeInputName.textContent = nameInput.value;
-    changeInputJob.textContent = jobInput.value;
-    togglePopup(popupEdit);
-}
+// function formSubmitHandler(evt) {
+//     evt.preventDefault(); 
+//     changeInputName.textContent = nameInput.value;
+//     changeInputJob.textContent = jobInput.value;
+//     togglePopup(popupEdit);
+// }
 
-editProfileForm.addEventListener('submit', formSubmitHandler);
+// editProfileForm.addEventListener('submit', formSubmitHandler);
 
 // function handleKeyDown(evt){
 //     if(evt.key === 'Escape'){
@@ -44,25 +44,25 @@ editProfileForm.addEventListener('submit', formSubmitHandler);
 //     }
 // }
 
-function handleEscListener(popup) {
-    if (!popup.classList.contains('popup_opened')) {
-        document.addEventListener('keydown', handleKeyDown);
-    } else{
-        document.removeEventListener('keydown', handleKeyDown);
-    }
-}
+// function handleEscListener(popup) {
+//     if (!popup.classList.contains('popup_opened')) {
+//         document.addEventListener('keydown', handleKeyDown);
+//     } else{
+//         document.removeEventListener('keydown', handleKeyDown);
+//     }
+// }
 
-buttonOpenPopupEdit.addEventListener("click", function () {
-    nameInput.value = changeInputName.textContent;
-    jobInput.value = changeInputJob.textContent;
-    togglePopup(popupEdit);
+// buttonOpenPopupEdit.addEventListener("click", function () {
+//     nameInput.value = changeInputName.textContent;
+//     jobInput.value = changeInputJob.textContent;
+//     togglePopup(popupEdit);
    
-});
+// });
 
 
-buttonClosePopupEdit.addEventListener("click", function () {
-    togglePopup(popupEdit);
-});
+// buttonClosePopupEdit.addEventListener("click", function () {
+//     togglePopup(popupEdit);
+// });
 
 // buttonOpenPopupNewCard.addEventListener("click", function () {
 //     cardName.value = "";
@@ -87,17 +87,17 @@ buttonClosePopupEdit.addEventListener("click", function () {
 //     togglePopup(popupImage);
 // }
 
-const handleSubmitCard = (evt) => {
-    evt.preventDefault();
-    const cardClass =new Card({
-        name: cardName.value,
-        link: cardUrl.value
-    }, elementTemplate, openImage);
-    cards.prepend(cardClass.generateCard());
-    togglePopup(popupNewCard);
-};
+// const handleSubmitCard = (evt) => {
+//     evt.preventDefault();
+//     const cardClass =new Card({
+//         name: cardName.value,
+//         link: cardUrl.value
+//     }, elementTemplate, openImage);
+//     cards.prepend(cardClass.generateCard());
+//     togglePopup(popupNewCard);
+// };
 
-addCardForm.addEventListener('submit', handleSubmitCard);
+// addCardForm.addEventListener('submit', handleSubmitCard);
 
 // initialCards.forEach((item) => {
 //     const card = new Card(item, elementTemplate, openImage);
@@ -172,10 +172,24 @@ buttonOpenPopupNewCard.addEventListener('click', function(){
 
 cardList.renderItems();
 
+const userInfo = new UserInfo(nameInput , jobInput);
+
+buttonOpenPopupEdit.addEventListener('click', function(){
+    const popupEditProfile = new PopupWithForm(popupEdit, {
+      handleFormSubmit: (evt) => {
+        evt.preventDefault();
+        const values = popupEditProfile._getInputValues();
+        userInfo.setUserInfo(values[0], values[1]);
+        popupEditProfile.close();
+      }
+    });
+    popupEditProfile._setInputValues(userInfo.getUserInfo());
+    popupEditProfile.open();
+  });
 
 
-// const openImage = new PopupWithImage(popupImage);
-// openImage.setEventListeners();
+
+
 
 
   
