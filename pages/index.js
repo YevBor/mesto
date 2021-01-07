@@ -8,6 +8,7 @@ import {elementTemplate, buttonOpenPopupEdit,buttonOpenPopupNewCard,
     popupEdit,popupNewCard,popupImage,nameInput,jobInput,popupImageSub,
     popupFullImage,cardName,cardUrl,changeInputName,changeInputJob,
     editProfileForm,addCardForm,cards}  from '../utils/constants.js'
+import { PopupWithImage } from '../components/PopupWithImage.js';
 
 popupEdit.addEventListener('click', closePopupOverlay);
 popupNewCard.addEventListener('click', closePopupOverlay);
@@ -130,7 +131,12 @@ enableValidation({
 
 
 function creatCard(item){
-    const card = new Card(item, elementTemplate, openImage);
+    const card = new Card(item, elementTemplate, {
+        handleCardClick: (text, link) => {
+            const openImagePopup = new PopupWithImage(popupImage);
+            openImagePopup.open(text,link);
+        }
+    } );
     return card.generateCard();
 }
 
@@ -145,7 +151,7 @@ const cardList = new Section({
   cards
 );
 
-const popupWindow = new Popup()
+// const popupWindow = new Popup()
 
 
 cardList.renderItems();

@@ -11,5 +11,6 @@ export class PopupWithImage extends Popup {
         popupImageSub.innerText = text;
         popupFullImage.src = link;
         popupFullImage.alt = text;
+        console.log('hi class Popupwith Image');
     }
 }
