@@ -11,7 +11,6 @@ export default class UserInfo {
     }
   
     setUserInfo(newName, newJob) {
-      console.log(newName, newJob);
       this._name.textContent = newName;
       this._job.textContent = newJob;
     }

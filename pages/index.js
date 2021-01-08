@@ -163,7 +163,8 @@ buttonOpenPopupNewCard.addEventListener('click', function(){
           name: values[0],
           link: values[1]
         };
-        defaultCardList.addItem(data);
+        const card = creatCard(data)
+        cardList.addItem(card);
         newCard.close();
       }
     });
@@ -172,7 +173,7 @@ buttonOpenPopupNewCard.addEventListener('click', function(){
 
 cardList.renderItems();
 
-const userInfo = new UserInfo(nameInput , jobInput);
+const userInfo = new UserInfo(changeInputName , changeInputJob);
 
 buttonOpenPopupEdit.addEventListener('click', function(){
     const popupEditProfile = new PopupWithForm(popupEdit, {
