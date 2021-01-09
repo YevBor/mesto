@@ -1,4 +1,4 @@
-import { Popup } from './Popup.js';
+import Popup  from './Popup.js';
 import {popupImageSub,popupFullImage} from '../utils/constants.js';
 
 export class PopupWithImage extends Popup {

@@ -5,7 +5,7 @@ import {initialCards,validationSelector, elementTemplate, buttonOpenPopupEdit,bu
     popupEdit,popupNewCard,popupImage,changeInputName,changeInputJob,cards}  from '../utils/constants.js'
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import UserInfo from '../components/UserInfo.js';
-import {PopupWithForm} from '../components/PopupWithForm.js';
+import PopupWithForm from '../components/PopupWithForm.js';
 
 
 function enableValidation(objectsList) {
