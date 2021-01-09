@@ -1,5 +1,5 @@
 
-export class Card {
+export default class Card {
     constructor(data, templateSelector, { handleCardClick }){
         this._handleCardClick = handleCardClick;
         // this._openImage = openImage;

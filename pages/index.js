@@ -1,9 +1,7 @@
-import { Section } from '../components/Section.js';
-import { Popup } from '../components/Popup.js';
-import {Card} from '../scripts/Card.js';
-import {FormValidator} from '../scripts/FormValidator.js';
-import {initialCards} from '../scripts/initialCards.js';
-import {elementTemplate, buttonOpenPopupEdit,buttonOpenPopupNewCard,
+import Section  from '../components/Section.js';
+import Card from '../scripts/Card.js';
+import FormValidator from '../scripts/FormValidator.js';
+import {initialCards,validationSelector, elementTemplate, buttonOpenPopupEdit,buttonOpenPopupNewCard,
     buttonClosePopupEdit,buttonClosePopupNewCard,buttonClosePopupImage,
     popupEdit,popupNewCard,popupImage,nameInput,jobInput,popupImageSub,
     popupFullImage,cardName,cardUrl,changeInputName,changeInputJob,
@@ -120,14 +118,7 @@ function enableValidation(selectors) {
 //     buttonDisable.disabled = true;
 // }
 
-enableValidation({
-    formSelector: '.popup__container',
-    inputSelector: '.popup__text-row',
-    submitButtonSelector: '.popup__save-button',
-    inactiveButtonClass: 'popup__save-button_invalid',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__text-row_state_invalid'
-});
+enableValidation(validationSelector);
 
 // ##################################
 
@@ -179,12 +170,13 @@ buttonOpenPopupEdit.addEventListener('click', function(){
     const popupEditProfile = new PopupWithForm(popupEdit, {
       handleFormSubmit: (evt) => {
         evt.preventDefault();
+        console.log(evt)
         const values = popupEditProfile._getInputValues();
         userInfo.setUserInfo(values[0], values[1]);
         popupEditProfile.close();
       }
     });
-    popupEditProfile._setInputValues(userInfo.getUserInfo());
+    popupEditProfile.setInputValues(userInfo.getUserInfo());
     popupEditProfile.open();
   });
 
