@@ -6,6 +6,7 @@ export default class Card {
         this._altText = data.name;
         this._link = data.link;
         this._template = document.querySelector(templateSelector).content.querySelector(".cards__item");
+        this.elementCard = document.querySelector(".cards__image");
     }
     _getTemplate() {
         const cardElement = this._template.cloneNode(true);
@@ -19,8 +20,7 @@ export default class Card {
         this._element.querySelector(".cards__remove-button")
         .addEventListener("click", () => this._handleRemoveClick());
 
-        this._element.querySelector(".cards__image")
-        .addEventListener('click', () => this._handleCardClick(this._text, this._link));
+        this.elementCardImage.addEventListener('click', () => this._handleCardClick(this._text, this._link));
 
     }
 
@@ -35,11 +35,11 @@ export default class Card {
 
     generateCard() {
         this._element = this._getTemplate();
-        const elementCardImage = this._element.querySelector(".cards__image");
-        elementCardImage.src = this._link;
-        elementCardImage.alt = this._altText;
-        this._element.querySelector(".cards__title").innerText = this._text;
+        this.elementCardImage = this._element.querySelector(".cards__image");
         this._setEventListeners();
+        this.elementCardImage.src = this._link;
+        this.elementCardImage.alt = this._altText;
+        this._element.querySelector(".cards__title").innerText = this._text;
         return this._element;
     } 
 }

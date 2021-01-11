@@ -14,7 +14,7 @@ function enableValidation(objectsList) {
     const formElements = Array.from(document.querySelectorAll(objectsList.formSelector));
     formElements.forEach(form => {
         const formValidator = new FormValidator(objectsList, form);
-        formValidator.generateForm();        
+        formValidator.enableValidation();        
     });
 }
 

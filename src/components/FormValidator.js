@@ -60,7 +60,7 @@ export default class FormValidator{
 
    
 
-    generateForm(){
+    enableValidation(){
         this._element = this._formElement.addEventListener("submit", (evt) => {
             evt.preventDefault();
         });
