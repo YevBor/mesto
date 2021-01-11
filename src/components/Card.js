@@ -2,7 +2,6 @@
 export default class Card {
     constructor(data, templateSelector, { handleCardClick }){
         this._handleCardClick = handleCardClick;
-        // this._openImage = openImage;
         this._text =  data.name;
         this._altText = data.name;
         this._link = data.link;
@@ -20,16 +19,11 @@ export default class Card {
         this._element.querySelector(".cards__remove-button")
         .addEventListener("click", () => this._handleRemoveClick());
 
-        // this._element.querySelector(".cards__image")
-        // .addEventListener('click', () => this._handleOpenImage());
         this._element.querySelector(".cards__image")
         .addEventListener('click', () => this._handleCardClick(this._text, this._link));
 
     }
-    // _handleOpenImage(){
-    //     this._openImage(this._text, this._link);
 
-    // }
     _handleRemoveClick() {
         this._element.remove();
     }

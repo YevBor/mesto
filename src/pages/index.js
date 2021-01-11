@@ -1,3 +1,4 @@
+import './index.css';
 import Section  from '../components/Section.js';
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
@@ -6,6 +7,7 @@ import {initialCards,validationSelector, elementTemplate, buttonOpenPopupEdit,bu
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import UserInfo from '../components/UserInfo.js';
 import PopupWithForm from '../components/PopupWithForm.js';
+
 
 
 function enableValidation(objectsList) {
@@ -59,7 +61,6 @@ buttonOpenPopupEdit.addEventListener('click', function(){
     const popupEditProfile = new PopupWithForm(popupEdit, {
         handleFormSubmit: (evt) => {
             evt.preventDefault();
-            console.log(evt)
             const values = popupEditProfile._getInputValues();
             userInfo.setUserInfo(values[0], values[1]);
             popupEditProfile.close();

@@ -3,6 +3,7 @@ export default class Popup{
     constructor(popupSelector){
         this._popup = popupSelector;
         this._handleEscClose = this._handleEscClose.bind(this);
+        this._handleOverlayClose = this._handleOverlayClose.bind(this);
         this._closeButton = popupSelector.querySelector('.popup__close-image');
 
     }
@@ -20,7 +21,7 @@ export default class Popup{
             this.close();
         }
     }
-    _handleOverlayClose = (evt) => {
+    _handleOverlayClose(evt){
         if (evt.target === evt.currentTarget) {
           this.close();
         }
