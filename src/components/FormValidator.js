@@ -1,4 +1,4 @@
-export class FormValidator{
+export default class FormValidator{
     constructor(selectors, formElement){
         this._formSelector = selectors.formSelector;
         this._inputSelector = selectors.inputSelector;
@@ -61,8 +61,7 @@ export class FormValidator{
    
 
     generateForm(){
-        this._element = this._formElement;
-        this._element.addEventListener("submit", (evt) => {
+        this._element = this._formElement.addEventListener("submit", (evt) => {
             evt.preventDefault();
         });
         this._setEventListeners();       
