@@ -5,12 +5,10 @@
     margin-right: 7%;
 }
 
-
 @media screen and (max-width: 640px) {
     .avatar{
         align-self: center; 
         margin-bottom: 12px;
         margin-right: 0px;
-    }
-    
+    }  
 }
