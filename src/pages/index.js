@@ -18,11 +18,11 @@ function enableValidation(objectsList) {
     });
 }
 
+const openImagePopup = new PopupWithImage(popupImage, popupImageSub, popupFullImage);
 
 function creatCard(item){
     const card = new Card(item, elementTemplate, {
         handleCardClick: (text, link) => {
-            const openImagePopup = new PopupWithImage(popupImage, popupImageSub, popupFullImage);
             openImagePopup.open(text,link);
         }
     } );
@@ -40,32 +40,34 @@ const cardList = new Section({
 cards
 );
 
+const newCardPopup = new PopupWithForm(popupNewCard, {
+    handleFormSubmit: (evt) => {
+        evt.preventDefault();
+        const values = newCardPopup._getInputValues();
+        const data = {
+            name: values[0],
+            link: values[1]
+        };
+        const card = creatCard(data)
+        cardList.addItem(card);
+        newCardPopup.close();
+    }
+});
+
 buttonOpenPopupNewCard.addEventListener('click', function(){
-    const newCard = new PopupWithForm(popupNewCard, {
-        handleFormSubmit: (evt) => {
-            evt.preventDefault();
-            const values = newCard._getInputValues();
-            const data = {
-                name: values[0],
-                link: values[1]
-            };
-            const card = creatCard(data)
-            cardList.addItem(card);
-            newCard.close();
-        }
-    });
-    newCard.open();
+    newCardPopup.open();
+});
+
+const popupEditProfile = new PopupWithForm(popupEdit, {
+    handleFormSubmit: (evt) => {
+        evt.preventDefault();
+        const values = popupEditProfile._getInputValues();
+        userInfo.setUserInfo(values[0], values[1]);
+        popupEditProfile.close();
+    }
 });
 
 buttonOpenPopupEdit.addEventListener('click', function(){
-    const popupEditProfile = new PopupWithForm(popupEdit, {
-        handleFormSubmit: (evt) => {
-            evt.preventDefault();
-            const values = popupEditProfile._getInputValues();
-            userInfo.setUserInfo(values[0], values[1]);
-            popupEditProfile.close();
-        }
-    });
     popupEditProfile.setInputValues(userInfo.getUserInfo());
     popupEditProfile.open();
 });
