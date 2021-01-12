@@ -3,7 +3,7 @@ import Section  from '../components/Section.js';
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
 import {initialCards,validationSelector, elementTemplate, buttonOpenPopupEdit,buttonOpenPopupNewCard,
-    popupEdit,popupNewCard,popupImage,changeInputName,changeInputJob,cards}  from '../utils/constants.js'
+    popupEdit,popupNewCard,popupImage,changeInputName,changeInputJob,cards, popupImageSub, popupFullImage}  from '../utils/constants.js'
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import UserInfo from '../components/UserInfo.js';
 import PopupWithForm from '../components/PopupWithForm.js';
@@ -22,7 +22,7 @@ function enableValidation(objectsList) {
 function creatCard(item){
     const card = new Card(item, elementTemplate, {
         handleCardClick: (text, link) => {
-            const openImagePopup = new PopupWithImage(popupImage);
+            const openImagePopup = new PopupWithImage(popupImage, popupImageSub, popupFullImage);
             openImagePopup.open(text,link);
         }
     } );
