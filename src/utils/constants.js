@@ -8,9 +8,9 @@ export const buttonClosePopupEdit = document.querySelector(".popup_type_edit .po
 export const buttonClosePopupNewCard = document.querySelector(".popup_type_new-card .popup__close-image");
 export const buttonClosePopupImage = document.querySelector(".popup_type_image .popup__close-image");
 //popups
-export const popupEdit = document.querySelector(".popup_type_edit");
-export const popupNewCard = document.querySelector(".popup_type_new-card");
-export const popupImage = document.querySelector(".popup_type_image");
+export const popupEdit = ".popup_type_edit";
+export const popupNewCard = ".popup_type_new-card";
+export const popupImage = ".popup_type_image";
 export const nameInput = document.querySelector(".popup_type_edit .popup__input-name");
 export const jobInput = document.querySelector(".popup_type_edit .popup__input-profession");
 //full size image
