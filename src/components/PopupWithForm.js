@@ -10,12 +10,10 @@ export default class PopupWithForm extends Popup{
         const values = this._fields.map((field) => {
             return field.value;
         });
-        console.log(values)
         return values;
     }
     setInputValues(values) {
         this._fields.forEach((field, index) => {
-          console.log(values)
           field.value = values[index];
         })
       }
