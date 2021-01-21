@@ -7,8 +7,15 @@ import {initialCards,validationSelector, elementTemplate, buttonOpenPopupEdit,bu
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import UserInfo from '../components/UserInfo.js';
 import PopupWithForm from '../components/PopupWithForm.js';
+import Api from '../components/Api.js';
 
 
+
+const api = new Api({
+    address: 'https://mesto.nomoreparties.co/v1/',
+    token: 'b51eb88c-1f29-40be-ab99-c44982cb41ab',
+    groupId: 'cohort-19'
+})
 
 function enableValidation(objectsList) {
     const formElements = Array.from(document.querySelectorAll(objectsList.formSelector));
@@ -31,7 +38,7 @@ function creatCard(item){
 
 
 const cardList = new Section({
-    items: initialCards,
+    // items: initialCards,
     renderer: (item) => {
         const card = creatCard(item);
         cardList.addItem(card);
@@ -73,9 +80,30 @@ buttonOpenPopupEdit.addEventListener('click', function(){
 });
 
 const userInfo = new UserInfo(changeInputName , changeInputJob);
-cardList.renderItems();
+// cardList.renderItems();
 enableValidation(validationSelector);
 
+
+api.getProfileData()
+    .then(result => {
+        userInfo.setUserInfo(result.name, result.about);
+        console.log()
+        document.querySelector('.avatar').src = result.avatar;
+
+    })
+    .catch((err) => {
+        console.log(err);
+    });
+
+
+api.getInitialCards()
+    .then(result => {
+        console.log(result);
+        cardList.renderItems(result);
+    })
+    .catch((err) => {
+        console.log(err);
+    });
 
 
 
