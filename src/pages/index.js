@@ -49,15 +49,23 @@ cards
 
 const newCardPopup = new PopupWithForm(popupNewCard, {
     handleFormSubmit: (evt) => {
-        evt.preventDefault();
+        // evt.preventDefault();
         const values = newCardPopup._getInputValues();
-        const data = {
-            name: values[0],
-            link: values[1]
-        };
-        const card = creatCard(data)
-        cardList.addItem(card);
-        newCardPopup.close();
+        // const data = {
+        //     name: values[0],
+        //     link: values[1]
+        // };
+        api.addNewCard(values)
+            .then(result => {
+                console.log(result)
+                const card = creatCard(result)
+                cardList.addItem(card);
+                newCardPopup.close();
+        
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     }
 });
 
@@ -67,9 +75,15 @@ buttonOpenPopupNewCard.addEventListener('click', function(){
 
 const popupEditProfile = new PopupWithForm(popupEdit, {
     handleFormSubmit: (evt) => {
-        evt.preventDefault();
+        // evt.preventDefault();
         const values = popupEditProfile._getInputValues();
-        userInfo.setUserInfo(values[0], values[1]);
+        
+        api.editUserProfile(values)
+            .catch((err) => {
+                console.log(err);
+            });
+            userInfo.setUserInfo(values[0], values[1]); 
+        
         popupEditProfile.close();
     }
 });
@@ -98,12 +112,13 @@ api.getProfileData()
 
 api.getInitialCards()
     .then(result => {
-        console.log(result);
         cardList.renderItems(result);
     })
     .catch((err) => {
         console.log(err);
     });
+
+
 
 
 
