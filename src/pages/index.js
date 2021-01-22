@@ -25,10 +25,22 @@ function enableValidation(objectsList) {
     });
 }
 
+let myId = '';
+api.getProfileData()
+    .then(result => {
+        userInfo.setUserInfo(result.name, result.about, result._id);
+        myId = result._id;
+        document.querySelector('.avatar').src = result.avatar;
+
+    })
+    .catch((err) => {
+        console.log(err);
+    });
+
 const openImagePopup = new PopupWithImage(popupImage, popupImageSub, popupFullImage);
 
 function creatCard(item){
-    const card = new Card(item, elementTemplate, {
+    const card = new Card(myId, item, elementTemplate, {
         handleCardClick: (text, link) => {
             openImagePopup.open(text,link);
         }
@@ -69,6 +81,7 @@ const newCardPopup = new PopupWithForm(popupNewCard, {
     }
 });
 
+
 buttonOpenPopupNewCard.addEventListener('click', function(){
     newCardPopup.open();
 });
@@ -88,6 +101,13 @@ const popupEditProfile = new PopupWithForm(popupEdit, {
     }
 });
 
+// const popupDeleteCard = new PopupWithForm(popupDelete, {
+//     handleFormSubmit: (evt) => {
+//         const cardId
+//     }
+
+// })
+
 buttonOpenPopupEdit.addEventListener('click', function(){
     popupEditProfile.setInputValues(userInfo.getUserInfo());
     popupEditProfile.open();
@@ -97,17 +117,6 @@ const userInfo = new UserInfo(changeInputName , changeInputJob);
 // cardList.renderItems();
 enableValidation(validationSelector);
 
-
-api.getProfileData()
-    .then(result => {
-        userInfo.setUserInfo(result.name, result.about);
-        console.log()
-        document.querySelector('.avatar').src = result.avatar;
-
-    })
-    .catch((err) => {
-        console.log(err);
-    });
 
 
 api.getInitialCards()

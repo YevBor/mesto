@@ -1,8 +1,10 @@
 
 export default class Card {
-    constructor(data, templateSelector, { handleCardClick }){
+    constructor(myId, data, templateSelector, { handleCardClick }){
         this._handleCardClick = handleCardClick;
         this._likes = data.likes;
+        this._myId = myId;
+        this._ownerId = data.owner._id;
         this._text =  data.name;
         this._altText = data.name;
         this._link = data.link;
@@ -42,6 +44,9 @@ export default class Card {
         this.elementCardImage.alt = this._altText;
         this._element.querySelector(".cards__title").innerText = this._text;
         this._element.querySelector(".cards__like-count").innerText = this._likes.length;
+        if (this._ownerId !== this._myId) {
+            this._element.querySelector('.cards__remove-button').remove();
+        }
         return this._element;
     } 
 }

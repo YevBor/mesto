@@ -60,8 +60,24 @@ export default class Api{
             },
             body: JSON.stringify({
                 name: values[0],
-                link: values[1]
+                link : values[1]
             })
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            return Promise.reject(`Ошибка: ${res.status}`);
+        })
+    }
+    
+    removeCard(id) {
+        return fetch(`${this._address}${this._groupId}/cards/${id}`, {
+            method: 'DELETE',
+            headers: {
+                authorization: this._token,
+                'Content-Type': 'application/json',
+            }
         })
         .then(response => {
             if (response.ok) {
