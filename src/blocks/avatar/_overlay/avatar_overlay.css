@@ -14,7 +14,7 @@
 
 }
 .avatar_overlay:hover {
-    background-image: url(../../../images/);
+    background-image: url(../../../images/trash_button.svg);
     background-size: 26px 26px;
     background-position: center;
     background-repeat: no-repeat;
