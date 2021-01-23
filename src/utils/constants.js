@@ -11,6 +11,7 @@ export const buttonClosePopupImage = document.querySelector(".popup_type_image .
 export const popupEdit = ".popup_type_edit";
 export const popupNewCard = ".popup_type_new-card";
 export const popupImage = ".popup_type_image";
+export const popupDelete = ".popup_type_delete-card";
 export const nameInput = document.querySelector(".popup_type_edit .popup__input-name");
 export const jobInput = document.querySelector(".popup_type_edit .popup__input-profession");
 //full size image

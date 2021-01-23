@@ -15,7 +15,7 @@
     <main>
         <section class="profile">   
             <div class="profile__items">
-                <img class="avatar" src="<%=require('./images/kusto.jpg')%>" alt="аватар">
+                <img class="avatar avatar_overlay" src="<%=require('./images/kusto.jpg')%>" alt="аватар">
                 <div class="profile__item">
                     <div class="profile__title-inline">
                         <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -54,8 +54,9 @@
             <button type="submit" class="popup__save-button">Создать</button>
         </form>
     </div>
-    <div class="popup popup_overlay popup_type_new-card">
+    <div class="popup popup_overlay popup_type_delete-card">
         <form name="new_form" class="popup__container" novalidate>
+            <button aria-label="Close" type="button" class="popup__close-image pointer-opacity"></button>
             <h2 class="popup__title">Вы уверены?</h2>          
             <button type="submit" class="popup__save-button">Да</button>
         </form>

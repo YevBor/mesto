@@ -70,7 +70,7 @@ export default class Api{
             return Promise.reject(`Ошибка: ${res.status}`);
         })
     }
-    
+
     removeCard(id) {
         return fetch(`${this._address}${this._groupId}/cards/${id}`, {
             method: 'DELETE',
@@ -78,6 +78,56 @@ export default class Api{
                 authorization: this._token,
                 'Content-Type': 'application/json',
             }
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            return Promise.reject(`Ошибка: ${res.status}`);
+        })
+    }
+    removeLike(id) {
+        return fetch(`${this._address}${this._groupId}/cards/likes/${id}`, {
+            method: "DELETE",
+            headers: {
+                authorization: this._token,
+                "Content-Type": "application/json",
+            },
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            return Promise.reject(`Ошибка: ${res.status}`);
+        })
+    }
+
+    addLike(id) {
+        return fetch(`${this._address}${this._groupId}/cards/likes/${id}`, {
+            method: "PUT",
+            headers: {
+                authorization: this._token,
+                "Content-Type": "application/json",
+            },
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            return Promise.reject(`Ошибка: ${res.status}`);
+        })
+    }
+
+    editAvatar(data) {
+        return fetch(`${this._address}${this._groupId}/users/me/avatar`, {
+            method: "PATCH",
+            headers: {
+                authorization: this._token,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                avatar: data.avatar,
+            }),
         })
         .then(response => {
             if (response.ok) {

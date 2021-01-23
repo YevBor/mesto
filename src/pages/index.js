@@ -3,7 +3,7 @@ import Section  from '../components/Section.js';
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
 import {initialCards,validationSelector, elementTemplate, buttonOpenPopupEdit,buttonOpenPopupNewCard,
-    popupEdit,popupNewCard,popupImage,changeInputName,changeInputJob,cards, popupImageSub, popupFullImage}  from '../utils/constants.js'
+    popupEdit,popupNewCard,popupImage,changeInputName,changeInputJob,cards, popupImageSub, popupFullImage,popupDelete}  from '../utils/constants.js'
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import UserInfo from '../components/UserInfo.js';
 import PopupWithForm from '../components/PopupWithForm.js';
@@ -31,23 +31,53 @@ api.getProfileData()
         userInfo.setUserInfo(result.name, result.about, result._id);
         myId = result._id;
         document.querySelector('.avatar').src = result.avatar;
-
+        
     })
     .catch((err) => {
         console.log(err);
     });
-
-const openImagePopup = new PopupWithImage(popupImage, popupImageSub, popupFullImage);
+    // let cardId ="";
+    const openImagePopup = new PopupWithImage(popupImage, popupImageSub, popupFullImage);
 
 function creatCard(item){
     const card = new Card(myId, item, elementTemplate, {
         handleCardClick: (text, link) => {
             openImagePopup.open(text,link);
-        }
+            // cardId = card;
+        },
+        handleDeleteCard: () => {
+            popupDeleteCard(card);    
+        },
+        handleAddLike: () => {
+            api.addLike(item._id)
+               .then(res =>  {card.likeCount(res)})
+               .catch(err => console.log(`ошибка лайка ${err}`))
+        },
+        handlRemoveLike: () => {
+           api.removeLike(item._id)
+               .then(res => card.likeCount(res))
+               .catch(err => console.log(`ошибка дизлайка ${err}`))
+        },
     } );
     return card.generateCard();
 }
 
+
+function popupDeleteCard(card) {
+    const popupConfirm = new PopupWithForm(popupDelete, {
+        handleFormSubmit: (evt) => {
+            api.removeCard(card.getId())
+                .catch((err) => {
+                    console.log(err);
+            });
+            card.removeCard();
+            popupConfirm.close();            
+        }
+    })
+    popupConfirm.open()
+}
+
+// popupDeleteCard.setEventListeners();
 
 const cardList = new Section({
     // items: initialCards,
@@ -69,7 +99,7 @@ const newCardPopup = new PopupWithForm(popupNewCard, {
         // };
         api.addNewCard(values)
             .then(result => {
-                console.log(result)
+                console.log(result._id)
                 const card = creatCard(result)
                 cardList.addItem(card);
                 newCardPopup.close();
@@ -101,12 +131,6 @@ const popupEditProfile = new PopupWithForm(popupEdit, {
     }
 });
 
-// const popupDeleteCard = new PopupWithForm(popupDelete, {
-//     handleFormSubmit: (evt) => {
-//         const cardId
-//     }
-
-// })
 
 buttonOpenPopupEdit.addEventListener('click', function(){
     popupEditProfile.setInputValues(userInfo.getUserInfo());
