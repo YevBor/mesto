@@ -1,0 +1,9 @@
+.cards__rectangle{
+    display: flex;
+    justify-content: space-between;
+    padding: 26px;
+    align-items: center;
+    background-color: #FFFFFF;
+    margin-top: -1.5%;
+    border-radius: 0px 0px 10px 10px;
+}

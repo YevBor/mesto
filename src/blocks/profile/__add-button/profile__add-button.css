@@ -1,0 +1,22 @@
+.profile__add-button{
+        background-image: url(../../../images/add_button1.svg);
+        background-color: transparent;
+        border: none;
+        width: 150px;
+        height: 50px;
+        background-repeat: no-repeat;
+        transition: opacity .25s ease-in-out;
+    }
+    
+@media screen and (max-width: 640px) {
+    .profile__add-button{
+
+        background-image: url(../../../images/add_big-button.svg);
+        margin-top: 36px;
+        width: 282px;
+    }   
+
+}
+
+
+

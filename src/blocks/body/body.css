@@ -1,0 +1,14 @@
+.body{
+    min-width: 320px;
+    background-color: black;
+    padding-right: 19px;
+    padding-left: 19px;
+}
+
+
+@media screen and (max-width: 580px) {
+    .body{
+        padding: 0;
+    }   
+    
+}

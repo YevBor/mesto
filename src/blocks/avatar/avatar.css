@@ -1,0 +1,29 @@
+.avatar{
+    position: relative;
+    background-position: center;
+    width: 100%;
+    max-width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-right: 7%;
+    object-fit: cover;
+    cursor: pointer;
+    transition: .5s ease;
+    
+}
+
+
+.avatar:hover {
+    opacity: 0.3;
+    background-image: url(../../../src/images/avatar_edit.svg);
+    background-position: center;
+    background-repeat: no-repeat;     
+}
+
+@media screen and (max-width: 640px) {
+    .avatar{
+        align-self: center;
+        margin-bottom: 12px;
+        margin-right: 0px;
+    }  
+}
