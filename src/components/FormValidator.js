@@ -10,6 +10,7 @@ export default class FormValidator{
     }
    
     _showError(input){
+        console.log(input.id);
         const errorElement = this._formElement.querySelector(`#${input.id}-error`);
         errorElement.textContent = input.validationMessage;
         input.classList.add(this._errorClass);
@@ -62,7 +63,7 @@ export default class FormValidator{
 
     enableValidation(){
         this._formElement.addEventListener("submit", (evt) => {
-            evt.preventDefault();
+            evt.preventDefault();           
         });
         this._setEventListeners();       
     }

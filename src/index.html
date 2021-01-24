@@ -6,7 +6,6 @@
     <meta name="keywords" content=":Жак-ив Кусто">
     <meta name="author" content="Евгений Борисовски">
     <title>Mesto</title>
-    <!-- <link rel="stylesheet" href="./pages/index.css">   -->
 </head>
 <body class="body">
     <header class="header">
@@ -15,7 +14,7 @@
     <main>
         <section class="profile">   
             <div class="profile__items">
-                <img class="avatar" src="<%=require('./images/kusto.jpg')%>" alt="аватар">
+                <img class="avatar avatar_overlay" src="<%=require('./images/kusto.jpg')%>" alt="аватар">
                 <div class="profile__item">
                     <div class="profile__title-inline">
                         <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -51,7 +50,23 @@
             <span id="new-card-name-error" class="popup__error"></span>
             <input required type="url" name="profile_job" placeholder="Ссылка на картинку" class="popup__text-row popup__input-profession" id="new-card-link">
             <span id="new-card-link-error" class="popup__error"></span>
-            <button type="submit" class="popup__save-button">Создать</button>
+            <button type="submit" class="popup__save-button">Сохранить</button>
+        </form>
+    </div>
+    <div class="popup popup_overlay popup_type_delete-card">
+        <form name="new_form" class="popup__container" novalidate>
+            <button aria-label="Close" type="button" class="popup__close-image pointer-opacity"></button>
+            <h2 class="popup__title">Вы уверены?</h2>          
+            <button type="submit" class="popup__save-button">Да</button>
+        </form>
+    </div>
+    <div class="popup popup_overlay popup_avatar">
+        <form name="new_form" class="popup__container" novalidate>
+            <button aria-label="Close" type="button" class="popup__close-image pointer-opacity"></button>
+            <h2 class="popup__title">Обновить аватар</h2>
+            <input required type="url" name="profile_job" placeholder="Ссылка на картинку" class="popup__text-row popup__input-profession" id="new-card-link">
+            <span id="new-card-link-error" class="popup__error"></span>
+            <button type="submit" class="popup__save-button">Сохранить</button>
         </form>
     </div>
     <div class="popup popup_overlay popup_type_image">
@@ -69,11 +84,13 @@
             </div>
             <div class="cards__rectangle">
                 <h2 class="cards__title">#</h2>
-                <button type="button"  aria-label="кнопка лайк" class="cards__like-button cards__like-button_active pointer-opacity"></button>
+                <div>
+                    <button type="button"  aria-label="кнопка лайк" class="cards__like-button cards__like-button_active pointer-opacity"></button>
+                    <h2 class="cards__like-count"></h2>
+                </div>
             </div>
         </div>
     </template>
-    <!-- <script type="module" src="./pages/index.js"></script> -->
 </body>
 </html>
 
