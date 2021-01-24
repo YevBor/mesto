@@ -31,6 +31,7 @@ let myId = '';
 api.getProfileData()
     .then(result => {
         userInfo.setUserInfo(result.name, result.about, result._id);
+        console.log(result.about);
         myId = result._id;
         document.querySelector('.avatar').src = result.avatar;
         
@@ -52,13 +53,14 @@ function creatCard(item){
         },
         handleAddLike: () => {
             api.addLike(item._id)
-               .then(res =>  {card.likeCount(res)})
-               .catch(err => console.log(`ошибка лайка ${err}`))
+               .then(res =>  {card.likeCount(res.likes);
+            })
+               .catch(err => console.log(err))
         },
         handlRemoveLike: () => {
            api.removeLike(item._id)
-               .then(res => card.likeCount(res))
-               .catch(err => console.log(`ошибка дизлайка ${err}`))
+               .then(res => card.likeCount(res.likes))
+               .catch(err => console.log(err))
         },
     } );
     return card.generateCard();
@@ -95,10 +97,7 @@ const newCardPopup = new PopupWithForm(popupNewCard, {
     handleFormSubmit: (evt) => {
         // evt.preventDefault();
         const values = newCardPopup._getInputValues();
-        // const data = {
-        //     name: values[0],
-        //     link: values[1]
-        // };
+        newCardPopup.setLoading(true);
         api.addNewCard(values)
             .then(result => {
                 console.log(result._id)
@@ -109,6 +108,9 @@ const newCardPopup = new PopupWithForm(popupNewCard, {
             })
             .catch((err) => {
                 console.log(err);
+            })
+            .finally(() => {
+                newCardPopup.setLoading(false);
             });
     }
 });
@@ -121,12 +123,17 @@ buttonOpenPopupNewCard.addEventListener('click', function(){
 const popupEditProfile = new PopupWithForm(popupEdit, {
     handleFormSubmit: (evt) => {
         // evt.preventDefault();
+        popupEditProfile.setLoading(true);
         const values = popupEditProfile._getInputValues();
         
         api.editUserProfile(values)
             .catch((err) => {
                 console.log(err);
+            })
+            .finally(() => {
+                popupEditProfile.setLoading(false);
             });
+            
             userInfo.setUserInfo(values[0], values[1]); 
         
         popupEditProfile.close();
@@ -156,7 +163,7 @@ api.getInitialCards()
 const popupUserAvatar = new PopupWithForm(popupAvatar, {
     handleFormSubmit: (evt) => {
         // evt.preventDefault();
-        console.log(evt)
+        popupUserAvatar.setLoading(true);
         const values = popupUserAvatar._getInputValues();
         console.log(values[0])
         api.editAvatar(values[0])
@@ -165,8 +172,10 @@ const popupUserAvatar = new PopupWithForm(popupAvatar, {
             })
             .catch((err) => {
                 console.log(err);
+            })
+            .finally(() => {
+                popupUserAvatar.setLoading(false);
             });
-            // document.querySelector('.avatar').src = values; 
         
         popupEditProfile.close();
     }
