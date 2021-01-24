@@ -2,7 +2,7 @@ import './index.css';
 import Section  from '../components/Section.js';
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
-import {initialCards,validationSelector, elementTemplate, buttonOpenPopupEdit,buttonOpenPopupNewCard,
+import {avatar,popupAvatar,validationSelector, elementTemplate, buttonOpenPopupEdit,buttonOpenPopupNewCard,
     popupEdit,popupNewCard,popupImage,changeInputName,changeInputJob,cards, popupImageSub, popupFullImage,popupDelete}  from '../utils/constants.js'
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import UserInfo from '../components/UserInfo.js';
@@ -16,6 +16,8 @@ const api = new Api({
     token: 'b51eb88c-1f29-40be-ab99-c44982cb41ab',
     groupId: 'cohort-19'
 })
+
+
 
 function enableValidation(objectsList) {
     const formElements = Array.from(document.querySelectorAll(objectsList.formSelector));
@@ -150,6 +152,29 @@ api.getInitialCards()
     .catch((err) => {
         console.log(err);
     });
+
+const popupUserAvatar = new PopupWithForm(popupAvatar, {
+    handleFormSubmit: (evt) => {
+        // evt.preventDefault();
+        console.log(evt)
+        const values = popupUserAvatar._getInputValues();
+        console.log(values[0])
+        api.editAvatar(values[0])
+            .then((res) => {
+                popupUserAvatar.close();
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+            // document.querySelector('.avatar').src = values; 
+        
+        popupEditProfile.close();
+    }
+});
+
+avatar.addEventListener('click', function (){
+    popupUserAvatar.open();
+})
 
 
 

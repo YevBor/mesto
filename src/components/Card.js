@@ -26,10 +26,12 @@ export default class Card {
                 if (likelist.classList.contains("cards__like-button_active")) {
                     console.log('privet')
                     this._handleAddLike();
+                    this._handleLikeClick();
                 } else {
                     console.log(this._element.querySelector(".cards__like-button"))
                     console.log('poka')
                     this._handlRemoveLike();
+                    this._handleLikeClick();
                 }
         });
 
