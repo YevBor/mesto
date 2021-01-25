@@ -1,8 +1,7 @@
 .avatar_overlay {
-    /* background: url(../../../src/images/avatar_edit.svg); */
     background-position: center;
     background-repeat: no-repeat;
-    z-index: 2; 
+    z-index: 2;
 }
 .avatar_overlay:hover{
     z-index: 2;
