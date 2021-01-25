@@ -1,5 +1,7 @@
 export const elementTemplate = '.template';
 
+
+
 //popups open buttons
 export const avatar = document.querySelector(".avatar");
 export const buttonOpenPopupEdit = document.querySelector(".profile__edit-button");

@@ -30,10 +30,10 @@ function enableValidation(objectsList) {
 let myId = '';
 api.getProfileData()
     .then(result => {
-        userInfo.setUserInfo(result.name, result.about, result._id);
-        console.log(result.about);
+        userInfo.setUserInfo(result);
+        // userInfo.setUserInfo(result.name, result.about,result.avatar, result._id);
         myId = result._id;
-        document.querySelector('.avatar').src = result.avatar;
+        // document.querySelector('.avatar').src = result.avatar;
         
     })
     .catch((err) => {
@@ -71,11 +71,16 @@ function popupDeleteCard(card) {
     const popupConfirm = new PopupWithForm(popupDelete, {
         handleFormSubmit: (evt) => {
             api.removeCard(card.getId())
+                .then(() => {
+                    card.removeCard();
+                })
                 .catch((err) => {
-                    console.log(err);
-            });
-            card.removeCard();
-            popupConfirm.close();            
+                    console.log(err)
+                })
+                .finally(() => {
+                    popupConfirm.close();
+                });
+                                
         }
     })
     popupConfirm.open()
@@ -117,6 +122,7 @@ const newCardPopup = new PopupWithForm(popupNewCard, {
 
 
 buttonOpenPopupNewCard.addEventListener('click', function(){
+    
     newCardPopup.open();
 });
 
@@ -127,14 +133,15 @@ const popupEditProfile = new PopupWithForm(popupEdit, {
         const values = popupEditProfile._getInputValues();
         
         api.editUserProfile(values)
+            .then((userData) => {
+                userInfo.setUserInfo(userData); 
+            })
             .catch((err) => {
                 console.log(err);
             })
             .finally(() => {
                 popupEditProfile.setLoading(false);
-            });
-            
-            userInfo.setUserInfo(values[0], values[1]); 
+            }); 
         
         popupEditProfile.close();
     }
@@ -146,7 +153,7 @@ buttonOpenPopupEdit.addEventListener('click', function(){
     popupEditProfile.open();
 });
 
-const userInfo = new UserInfo(changeInputName , changeInputJob);
+const userInfo = new UserInfo(changeInputName , changeInputJob,avatar);
 // cardList.renderItems();
 enableValidation(validationSelector);
 
@@ -165,9 +172,9 @@ const popupUserAvatar = new PopupWithForm(popupAvatar, {
         // evt.preventDefault();
         popupUserAvatar.setLoading(true);
         const values = popupUserAvatar._getInputValues();
-        console.log(values[0])
         api.editAvatar(values[0])
             .then((res) => {
+                userInfo.setUserInfo(res);
                 popupUserAvatar.close();
             })
             .catch((err) => {
