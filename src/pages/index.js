@@ -3,7 +3,7 @@ import Section  from '../components/Section.js';
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
 import {avatar,popupAvatar,validationSelector, elementTemplate, buttonOpenPopupEdit,buttonOpenPopupNewCard,
-    popupEdit,popupNewCard,popupImage,changeInputName,changeInputJob,cards, popupImageSub, popupFullImage,popupDelete}  from '../utils/constants.js'
+    popupEdit,popupNewCard,popupImage,changeInputName,changeInputJob,cards, popupImageSub, popupFullImage,popupDelete,formEditElement,formNewCardElement,formAvatarElement}  from '../utils/constants.js'
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import UserInfo from '../components/UserInfo.js';
 import PopupWithForm from '../components/PopupWithForm.js';
@@ -17,7 +17,9 @@ const api = new Api({
     groupId: 'cohort-19'
 })
 
-
+const formEdit = new FormValidator(validationSelector, formEditElement);
+const formNewCard = new FormValidator(validationSelector, formNewCardElement);
+const formAvatar = new FormValidator(validationSelector, formAvatarElement);
 
 function enableValidation(objectsList) {
     const formElements = Array.from(document.querySelectorAll(objectsList.formSelector));
@@ -27,6 +29,7 @@ function enableValidation(objectsList) {
     });
 }
 
+// enableValidation(validationSelector);
 let myId = '';
 console.log(myId)
 api.getProfileData()
@@ -54,7 +57,6 @@ function creatCard(item){
             // cardId = card;
         },
         handleDeleteCard: () => {
-            // popupDeleteCard(card);
             deleteCardPopup.open();
             carddel = card;    
         },
@@ -91,31 +93,10 @@ const deleteCardPopup= new PopupWithForm(popupDelete, {
             });
             
         }
-        // deleteCardPopup.open()
+
 })
 
 
-
-// function popupDeleteCard(card) {
-//     const popupConfirm = new PopupWithForm(popupDelete, {
-//         handleFormSubmit: (evt) => {
-//             api.removeCard(card.getId())
-//                 .then(() => {
-//                     card.removeCard();
-//                 })
-//                 .catch((err) => {
-//                     console.log(err)
-//                 })
-//                 .finally(() => {
-//                     popupConfirm.close();
-//                 });
-                                
-//         }
-//     })
-//     popupConfirm.open()
-// }
-
-// popupDeleteCard.setEventListeners();
 
 const cardList = new Section({
     // items: initialCards,
@@ -151,7 +132,8 @@ const newCardPopup = new PopupWithForm(popupNewCard, {
 
 
 buttonOpenPopupNewCard.addEventListener('click', function(){
-    
+    formNewCard.resetValidation();
+    formNewCard.enableValidation();
     newCardPopup.open();
 });
 
@@ -180,11 +162,12 @@ const popupEditProfile = new PopupWithForm(popupEdit, {
 buttonOpenPopupEdit.addEventListener('click', function(){
     popupEditProfile.setInputValues(userInfo.getUserInfo());
     popupEditProfile.open();
+    formEdit.resetValidation();
+    formEdit.enableValidation();
 });
 
 const userInfo = new UserInfo(changeInputName , changeInputJob,avatar);
 // cardList.renderItems();
-enableValidation(validationSelector);
 
 
 
@@ -219,6 +202,8 @@ const popupUserAvatar = new PopupWithForm(popupAvatar, {
 
 avatar.addEventListener('click', function (){
     popupUserAvatar.open();
+    formAvatar.resetValidation();
+    formAvatar.enableValidation();
 })
 
 

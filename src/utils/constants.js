@@ -32,6 +32,10 @@ export const changeInputJob = document.querySelector(".profile__subtitle");
 export const editProfileForm= document.querySelector(".popup_type_edit .popup__container");
 export const addCardForm = document.querySelector(".popup_type_new-card .popup__container");
 export const cards = document.querySelector('.cards');
+// form
+export const formEditElement = document.querySelector('.popup__container-edit')
+export const formNewCardElement = document.querySelector('.popup__container-new-card')
+export const formAvatarElement = document.querySelector('.popup__container-avatar')
 
 
 export const validationSelector = {

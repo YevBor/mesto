@@ -1,5 +1,6 @@
 export default class FormValidator{
     constructor(selectors, formElement){
+        console.log(formElement)
         this._formSelector = selectors.formSelector;
         this._inputSelector = selectors.inputSelector;
         this._submitButtonSelector = selectors.submitButtonSelector;
@@ -73,7 +74,7 @@ export default class FormValidator{
           this._hideError(inputElement)
         });
   
-        this._toggleButtonState();
+        // this._toggleButtonState();
       }
     
 } 
