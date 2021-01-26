@@ -5,11 +5,7 @@ export default class UserInfo {
       this._myId = myId
       this._avatar = avatar;
     }
-
-    setUserAvatar(avatar) {
-      this._avatar.style.backgroundImage = `url(${avatar})`;
-    }
-
+    
     getUserInfo() {
       const name = this._name.textContent;
       const job = this._job.textContent;

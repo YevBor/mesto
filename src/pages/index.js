@@ -21,13 +21,7 @@ const formEdit = new FormValidator(validationSelector, formEditElement);
 const formNewCard = new FormValidator(validationSelector, formNewCardElement);
 const formAvatar = new FormValidator(validationSelector, formAvatarElement);
 
-function enableValidation(objectsList) {
-    const formElements = Array.from(document.querySelectorAll(objectsList.formSelector));
-    formElements.forEach(form => {
-        const formValidator = new FormValidator(objectsList, form);
-        formValidator.enableValidation();        
-    });
-}
+
 
 // enableValidation(validationSelector);
 let myId = '';
