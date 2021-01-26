@@ -18,9 +18,11 @@ const api = new Api({
 })
 
 const formEdit = new FormValidator(validationSelector, formEditElement);
+formEdit.enableValidation();
 const formNewCard = new FormValidator(validationSelector, formNewCardElement);
+formNewCard.enableValidation();
 const formAvatar = new FormValidator(validationSelector, formAvatarElement);
-
+formAvatar.enableValidation();
 
 
 // enableValidation(validationSelector);
@@ -127,7 +129,6 @@ const newCardPopup = new PopupWithForm(popupNewCard, {
 
 buttonOpenPopupNewCard.addEventListener('click', function(){
     formNewCard.resetValidation();
-    formNewCard.enableValidation();
     newCardPopup.open();
 });
 
@@ -157,7 +158,6 @@ buttonOpenPopupEdit.addEventListener('click', function(){
     popupEditProfile.setInputValues(userInfo.getUserInfo());
     popupEditProfile.open();
     formEdit.resetValidation();
-    formEdit.enableValidation();
 });
 
 const userInfo = new UserInfo(changeInputName , changeInputJob,avatar);
@@ -197,7 +197,6 @@ const popupUserAvatar = new PopupWithForm(popupAvatar, {
 avatar.addEventListener('click', function (){
     popupUserAvatar.open();
     formAvatar.resetValidation();
-    formAvatar.enableValidation();
 })
 
 
