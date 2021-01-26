@@ -3,7 +3,7 @@ import Section  from '../components/Section.js';
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
 import {avatar,popupAvatar,validationSelector, elementTemplate, buttonOpenPopupEdit,buttonOpenPopupNewCard,
-    popupEdit,popupNewCard,popupImage,changeInputName,changeInputJob,cards, popupImageSub, popupFullImage,popupDelete}  from '../utils/constants.js'
+    popupEdit,popupNewCard,popupImage,changeInputName,changeInputJob,cards, popupImageSub, popupFullImage,popupDelete,formEditElement,formNewCardElement,formAvatarElement}  from '../utils/constants.js'
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import UserInfo from '../components/UserInfo.js';
 import PopupWithForm from '../components/PopupWithForm.js';
@@ -16,12 +16,10 @@ const api = new Api({
     token: 'b51eb88c-1f29-40be-ab99-c44982cb41ab',
     groupId: 'cohort-19'
 })
-const ppedit = document.querySelector('.popup__container-edit')
-const ppenew = document.querySelector('.popup__container-new-card')
-const ppeavatar = document.querySelector('.popup__container-avatar')
-const formEdit = new FormValidator(validationSelector, ppedit);
-const formNewCard = new FormValidator(validationSelector, ppenew);
-const formAvatar = new FormValidator(validationSelector, ppeavatar);
+
+const formEdit = new FormValidator(validationSelector, formEditElement);
+const formNewCard = new FormValidator(validationSelector, formNewCardElement);
+const formAvatar = new FormValidator(validationSelector, formAvatarElement);
 
 function enableValidation(objectsList) {
     const formElements = Array.from(document.querySelectorAll(objectsList.formSelector));
