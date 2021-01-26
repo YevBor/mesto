@@ -28,6 +28,7 @@ function enableValidation(objectsList) {
 }
 
 let myId = '';
+console.log(myId)
 api.getProfileData()
     .then(result => {
         userInfo.setUserInfo(result);
@@ -42,6 +43,10 @@ api.getProfileData()
     // let cardId ="";
     const openImagePopup = new PopupWithImage(popupImage, popupImageSub, popupFullImage);
 
+
+let carddel = '';
+
+
 function creatCard(item){
     const card = new Card(myId, item, elementTemplate, {
         handleCardClick: (text, link) => {
@@ -49,7 +54,9 @@ function creatCard(item){
             // cardId = card;
         },
         handleDeleteCard: () => {
-            popupDeleteCard(card);    
+            // popupDeleteCard(card);
+            deleteCardPopup.open();
+            carddel = card;    
         },
         handleAddLike: () => {
             api.addLike(item._id)
@@ -67,24 +74,46 @@ function creatCard(item){
 }
 
 
-function popupDeleteCard(card) {
-    const popupConfirm = new PopupWithForm(popupDelete, {
-        handleFormSubmit: (evt) => {
-            api.removeCard(card.getId())
-                .then(() => {
-                    card.removeCard();
-                })
-                .catch((err) => {
-                    console.log(err)
-                })
-                .finally(() => {
-                    popupConfirm.close();
-                });
-                                
+
+
+
+const deleteCardPopup= new PopupWithForm(popupDelete, {
+    handleFormSubmit: (evt) => {
+        api.removeCard(carddel.getId())
+            .then(() => {
+                carddel.removeCard();
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+            .finally(() => {
+                deleteCardPopup.close();
+            });
+            
         }
-    })
-    popupConfirm.open()
-}
+        // deleteCardPopup.open()
+})
+
+
+
+// function popupDeleteCard(card) {
+//     const popupConfirm = new PopupWithForm(popupDelete, {
+//         handleFormSubmit: (evt) => {
+//             api.removeCard(card.getId())
+//                 .then(() => {
+//                     card.removeCard();
+//                 })
+//                 .catch((err) => {
+//                     console.log(err)
+//                 })
+//                 .finally(() => {
+//                     popupConfirm.close();
+//                 });
+                                
+//         }
+//     })
+//     popupConfirm.open()
+// }
 
 // popupDeleteCard.setEventListeners();
 
