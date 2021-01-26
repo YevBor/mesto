@@ -16,8 +16,12 @@ const api = new Api({
     token: 'b51eb88c-1f29-40be-ab99-c44982cb41ab',
     groupId: 'cohort-19'
 })
-
-
+const ppedit = document.querySelector('.popup__container-edit')
+const ppenew = document.querySelector('.popup__container-new-card')
+const ppeavatar = document.querySelector('.popup__container-avatar')
+const formEdit = new FormValidator(validationSelector, ppedit);
+const formNewCard = new FormValidator(validationSelector, ppenew);
+const formAvatar = new FormValidator(validationSelector, ppeavatar);
 
 function enableValidation(objectsList) {
     const formElements = Array.from(document.querySelectorAll(objectsList.formSelector));
@@ -27,6 +31,7 @@ function enableValidation(objectsList) {
     });
 }
 
+// enableValidation(validationSelector);
 let myId = '';
 console.log(myId)
 api.getProfileData()
@@ -54,7 +59,6 @@ function creatCard(item){
             // cardId = card;
         },
         handleDeleteCard: () => {
-            // popupDeleteCard(card);
             deleteCardPopup.open();
             carddel = card;    
         },
@@ -91,31 +95,10 @@ const deleteCardPopup= new PopupWithForm(popupDelete, {
             });
             
         }
-        // deleteCardPopup.open()
+
 })
 
 
-
-// function popupDeleteCard(card) {
-//     const popupConfirm = new PopupWithForm(popupDelete, {
-//         handleFormSubmit: (evt) => {
-//             api.removeCard(card.getId())
-//                 .then(() => {
-//                     card.removeCard();
-//                 })
-//                 .catch((err) => {
-//                     console.log(err)
-//                 })
-//                 .finally(() => {
-//                     popupConfirm.close();
-//                 });
-                                
-//         }
-//     })
-//     popupConfirm.open()
-// }
-
-// popupDeleteCard.setEventListeners();
 
 const cardList = new Section({
     // items: initialCards,
@@ -151,7 +134,8 @@ const newCardPopup = new PopupWithForm(popupNewCard, {
 
 
 buttonOpenPopupNewCard.addEventListener('click', function(){
-    
+    formNewCard.resetValidation();
+    formNewCard.enableValidation();
     newCardPopup.open();
 });
 
@@ -180,11 +164,12 @@ const popupEditProfile = new PopupWithForm(popupEdit, {
 buttonOpenPopupEdit.addEventListener('click', function(){
     popupEditProfile.setInputValues(userInfo.getUserInfo());
     popupEditProfile.open();
+    formEdit.resetValidation();
+    formEdit.enableValidation();
 });
 
 const userInfo = new UserInfo(changeInputName , changeInputJob,avatar);
 // cardList.renderItems();
-enableValidation(validationSelector);
 
 
 
@@ -219,6 +204,8 @@ const popupUserAvatar = new PopupWithForm(popupAvatar, {
 
 avatar.addEventListener('click', function (){
     popupUserAvatar.open();
+    formAvatar.resetValidation();
+    formAvatar.enableValidation();
 })
 
 
